@@ -812,6 +812,51 @@
       font-size: 0.96rem;
     }
 
+    /* Direct Installer Download Bar */
+    .download-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .dl-size {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      opacity: 0.82;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+    .btn-secondary .dl-size {
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+    }
+    .artifact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-mono);
+      font-size: 0.8em;
+      font-weight: 600;
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+      transition: all 0.2s var(--ease-out-expo);
+      white-space: nowrap;
+    }
+    .artifact-link:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px -8px rgba(29, 91, 255, 0.55);
+    }
+
     /* Interactive Light/Dark Comparison Showcase */
     .compare-wrap {
       margin-top: 22px;
@@ -1540,6 +1585,21 @@
             </div>
           </div>
 
+          <!-- Direct Release Installer Download Buttons -->
+          <div class="download-bar">
+            <a href="https://github.com/RahmaOktoyadi19/rahma19app/releases/download/v1.0.0/Pindai_Setup_1.1.1_x64.exe" class="btn btn-primary btn-sm" download>
+              <span data-i18n="pindai.dlWin">↓ Unduh Windows (.exe)</span>
+              <span class="dl-size">13,93 MB</span>
+            </a>
+            <a href="https://github.com/RahmaOktoyadi19/rahma19app/releases/download/v1.0.0/Pindai_1.1.1_android.apk" class="btn btn-primary btn-sm" download>
+              <span data-i18n="pindai.dlAnd">↓ Unduh Android (.apk)</span>
+              <span class="dl-size">92,45 MB</span>
+            </a>
+            <a href="https://github.com/RahmaOktoyadi19/pindai_ocr/actions" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+              <span data-i18n="pindai.dlIos">iOS (.ipa) via Actions ↗</span>
+            </a>
+          </div>
+
           <div class="compare-wrap">
             <div class="compare-head">
               <strong style="font-size:0.88rem;" data-i18n="pindai.compareTitle">Pratinjau Interaktif Mode Terang vs Mode Gelap (Screenshot Asli)</strong>
@@ -1663,6 +1723,7 @@
                 <th data-i18n="pindai.thArt">Artefak Rilis</th>
                 <th data-i18n="pindai.thSize">Ukuran</th>
                 <th data-i18n="pindai.thVerif">Hasil Verifikasi</th>
+                <th data-i18n="pindai.thAct">Unduh</th>
               </tr>
             </thead>
             <tbody id="releaseTableBody"></tbody>
@@ -1762,6 +1823,12 @@
           'pindai.thArt': 'Artefak Rilis',
           'pindai.thSize': 'Ukuran',
           'pindai.thVerif': 'Hasil Verifikasi',
+          'pindai.thAct': 'Unduh',
+          'pindai.dlWin': '↓ Unduh Windows (.exe)',
+          'pindai.dlAnd': '↓ Unduh Android (.apk)',
+          'pindai.dlIos': 'iOS (.ipa) via Actions ↗',
+          'pindai.btnDownload': '↓ Unduh',
+          'pindai.btnActions': 'Actions ↗',
           'pindai.openGitHub': 'Lihat Kode Sumber Pindai di GitHub ↗',
           'footer.sub': 'Teknik Informatika Universitas Riau (UNRI)',
           'lb.close': 'Tutup',
@@ -1807,6 +1874,12 @@
           'pindai.thArt': 'Release Artifact',
           'pindai.thSize': 'Size',
           'pindai.thVerif': 'Verification Result',
+          'pindai.thAct': 'Download',
+          'pindai.dlWin': '↓ Download Windows (.exe)',
+          'pindai.dlAnd': '↓ Download Android (.apk)',
+          'pindai.dlIos': 'iOS (.ipa) via Actions ↗',
+          'pindai.btnDownload': '↓ Download',
+          'pindai.btnActions': 'Actions ↗',
           'pindai.openGitHub': 'View Pindai Source Code on GitHub ↗',
           'footer.sub': 'Informatics Engineering, Universitas Riau (UNRI)',
           'lb.close': 'Close',
@@ -2075,6 +2148,8 @@
           platform: 'Windows x64',
           artifact: 'Pindai_Setup_1.1.1_x64.exe',
           size: '13,93 MB',
+          url: 'https://github.com/RahmaOktoyadi19/rahma19app/releases/download/v1.0.0/Pindai_Setup_1.1.1_x64.exe',
+          directDownload: true,
           verif: {
             id: 'Inno Setup 7.1.1; menyertakan camera_windows_plugin.dll, pdfium.dll, printing_plugin.dll, dan 10 DLL Microsoft.VC145.CRT.',
             en: 'Inno Setup 7.1.1; bundles camera_windows_plugin.dll, pdfium.dll, printing_plugin.dll, and 10 Microsoft.VC145.CRT DLLs.'
@@ -2084,6 +2159,8 @@
           platform: 'Android',
           artifact: 'Pindai_1.1.1_android.apk',
           size: '92,45 MB',
+          url: 'https://github.com/RahmaOktoyadi19/rahma19app/releases/download/v1.0.0/Pindai_1.1.1_android.apk',
+          directDownload: true,
           verif: {
             id: 'Lolos apksigner (v2, 1 signer), zipalign 16 KB, serta verifikasi dexdump untuk ML Kit & PrintingPlugin.',
             en: 'Verified apksigner (v2, 1 signer), 16 KB zipalign, and dexdump verification for ML Kit & PrintingPlugin.'
@@ -2093,6 +2170,8 @@
           platform: 'iOS (iPhone)',
           artifact: 'Pindai_1.1.1_ios_unsigned.ipa',
           size: '~32 MB (CI)',
+          url: 'https://github.com/RahmaOktoyadi19/pindai_ocr/actions',
+          directDownload: false,
           verif: {
             id: 'Workflow GitHub Actions macOS-15 (tag v1.1.1), SwiftPM iOS 15.0+, membundel LatinOCRResources.bundle untuk OCR offline.',
             en: 'GitHub Actions macOS-15 workflow (tag v1.1.1), SwiftPM iOS 15.0+, bundling LatinOCRResources.bundle for offline OCR.'
@@ -2271,7 +2350,19 @@
           return '<li><span class="check-badge">•</span><span>' + item[currentLang] + '</span></li>';
         }).join('');
         document.getElementById('releaseTableBody').innerHTML = RELEASE_ROWS.map(function (r) {
-          return '<tr><td><strong>' + r.platform + '</strong></td><td><code>' + r.artifact + '</code></td><td>' + r.size + '</td><td>' + r.verif[currentLang] + '</td></tr>';
+          var attrs = r.directDownload
+            ? 'download'
+            : 'target="_blank" rel="noopener noreferrer"';
+          var icon = r.directDownload ? '↓' : '↗';
+          var btnCls = r.directDownload ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm';
+          var btnText = r.directDownload ? I18N[currentLang]['pindai.btnDownload'] : I18N[currentLang]['pindai.btnActions'];
+          return '<tr>' +
+            '<td><strong>' + r.platform + '</strong></td>' +
+            '<td><a class="artifact-link" href="' + r.url + '" ' + attrs + '><span>' + icon + '</span><span>' + r.artifact + '</span></a></td>' +
+            '<td style="white-space:nowrap;">' + r.size + '</td>' +
+            '<td>' + r.verif[currentLang] + '</td>' +
+            '<td style="white-space:nowrap;"><a class="' + btnCls + '" href="' + r.url + '" ' + attrs + '>' + btnText + '</a></td>' +
+          '</tr>';
         }).join('');
       }
 
