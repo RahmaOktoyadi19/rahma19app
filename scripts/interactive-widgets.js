@@ -572,7 +572,11 @@
     if (qrModal && qrModal.classList.contains('is-open')) renderQrModalContent();
   }
 
+  var widgetsInitialized = false;
+
   function initWidgets() {
+    if (widgetsInitialized) return;
+    widgetsInitialized = true;
     runBootCurtain(false);
     initImpactCounters();
     renderLiveArchitectures();
@@ -581,6 +585,13 @@
     initPrintButtons();
     buildPrintDossier();
   }
+
+  /* Self-boot safeguard in case a cached app.js ever omits widgets.init() */
+  document.addEventListener('DOMContentLoaded', function () {
+    setTimeout(function () {
+      if (!widgetsInitialized) initWidgets();
+    }, 250);
+  });
 
   window.RO_APP.widgets = {
     init: initWidgets,
