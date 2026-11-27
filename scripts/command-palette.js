@@ -101,6 +101,38 @@
       },
       {
         group: l === 'en' ? 'Quick Actions' : 'Aksi Cepat',
+        title: l === 'en' ? 'Presentation QR Code (Portfolio & SPORA)' : 'Tampilkan QR Code Presentasi (Portfolio & SPORA)',
+        sub: l === 'en' ? 'Scannable QR code for mentor & HRD projector sessions' : 'QR Code siap pindai HP untuk sesi presentasi proyektor',
+        tag: 'QR CODE',
+        keywords: 'qr code scan presentasi projector share bagikan',
+        action: function () { if (window.RO_APP.widgets) window.RO_APP.widgets.openQr('portfolio'); }
+      },
+      {
+        group: l === 'en' ? 'Quick Actions' : 'Aksi Cepat',
+        title: l === 'en' ? 'Print / Save Executive PDF Summary' : 'Cetak / Simpan Ringkasan Eksekutif PDF',
+        sub: l === 'en' ? 'Clean A4 dossier with QR code for HRD & mentors' : 'Ringkasan A4 bersih lengkap dengan QR Code untuk HRD/mentor',
+        tag: 'PDF',
+        keywords: 'pdf print cetak export dossier resume cv',
+        action: function () { if (window.RO_APP.widgets) window.RO_APP.widgets.printPdf(); }
+      },
+      {
+        group: l === 'en' ? 'Quick Actions' : 'Aksi Cepat',
+        title: l === 'en' ? 'Toggle Subtle Tactile Sound FX' : 'Aktifkan / Matikan Suara Interaksi Halus',
+        sub: l === 'en' ? 'Web Audio micro-clicks (muted by default)' : 'Efek suara klik Web Audio halus (mute secara default)',
+        tag: 'SOUND',
+        keywords: 'sound audio suara mute click fx',
+        action: function () { if (window.RO_APP.sound) window.RO_APP.sound.toggle(); }
+      },
+      {
+        group: l === 'en' ? 'Quick Actions' : 'Aksi Cepat',
+        title: l === 'en' ? 'Replay Cinematic Intro Curtain' : 'Putar Ulang Tirai Pembuka Sinematik',
+        sub: 'RO // Indarung VI Telemetry Intro',
+        tag: 'INTRO',
+        keywords: 'intro preloader curtain boot replay animasi pembuka',
+        action: function () { if (window.RO_APP.widgets) window.RO_APP.widgets.replayCurtain(); }
+      },
+      {
+        group: l === 'en' ? 'Quick Actions' : 'Aksi Cepat',
         title: l === 'en' ? 'Toggle Fullscreen Cinema Mode (Esc to exit)' : 'Mode Layar Penuh / Fullscreen (Tekan Esc untuk keluar)',
         sub: l === 'en' ? 'Hide browser tabs & address bar for clean presentation' : 'Sembunyikan tab & address bar browser untuk tampilan presentasi',
         tag: 'FULLSCREEN',
@@ -269,6 +301,8 @@
         '<div style="display:flex;flex-wrap:wrap;gap:10px;">' +
           '<a href="#/projects/spora" class="btn btn-primary btn-sm" data-brief-nav>Read SPORA Case Study →</a>' +
           '<a href="#/projects/pindai" class="btn btn-secondary btn-sm" data-brief-nav>Explore Pindai v1.1.1 →</a>' +
+          '<button type="button" class="btn btn-secondary btn-sm" data-print-pdf>Save PDF Brief ↓</button>' +
+          '<button type="button" class="btn btn-ghost btn-sm" data-open-qr="portfolio" data-brief-nav>QR Code</button>' +
           '<a href="https://github.com/RahmaOktoyadi19" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">GitHub ↗</a>' +
         '</div>';
     } else {
@@ -303,6 +337,8 @@
         '<div style="display:flex;flex-wrap:wrap;gap:10px;">' +
           '<a href="#/projects/spora" class="btn btn-primary btn-sm" data-brief-nav>Baca Case Study SPORA →</a>' +
           '<a href="#/projects/pindai" class="btn btn-secondary btn-sm" data-brief-nav>Jelajahi Pindai v1.1.1 →</a>' +
+          '<button type="button" class="btn btn-secondary btn-sm" data-print-pdf>Simpan Ringkasan PDF ↓</button>' +
+          '<button type="button" class="btn btn-ghost btn-sm" data-open-qr="portfolio" data-brief-nav>QR Presentasi</button>' +
           '<a href="https://github.com/RahmaOktoyadi19" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">GitHub ↗</a>' +
         '</div>';
     }

@@ -416,6 +416,20 @@
       '</button>'
     );
 
+    cards.push(
+      '<button type="button" class="contact-link-card" data-open-qr="portfolio" style="width:100%;text-align:left;">' +
+        '<div><strong>' + t('contact.qrTitle') + '</strong><span>' + t('contact.qrSub') + '</span></div>' +
+        '<span class="chip chip-cyan chip-mono">QR SCAN</span>' +
+      '</button>'
+    );
+
+    cards.push(
+      '<button type="button" class="contact-link-card" data-print-pdf style="width:100%;text-align:left;">' +
+        '<div><strong>' + t('contact.pdfTitle') + '</strong><span>' + t('contact.pdfSub') + '</span></div>' +
+        '<span class="chip chip-success chip-mono">↓ PDF</span>' +
+      '</button>'
+    );
+
     col.innerHTML = cards.join('');
 
     var copyBtn = document.getElementById('copyEmailBtn');

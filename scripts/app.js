@@ -54,6 +54,7 @@
     if (window.RO_APP.cases) window.RO_APP.cases.render();
     if (window.RO_APP.lightbox) window.RO_APP.lightbox.refreshLang();
     if (window.RO_APP.palette) window.RO_APP.palette.refreshLang();
+    if (window.RO_APP.widgets) window.RO_APP.widgets.refresh();
     syncFullscreenUI();
     if (window.RO_APP.router) {
       window.RO_APP.router.refreshTitle();
@@ -232,17 +233,19 @@
     };
 
     window.RO_APP.theme.init();
+    if (window.RO_APP.sound) window.RO_APP.sound.init();
     window.RO_APP.lightbox.init();
     window.RO_APP.palette.init();
     initMobileDrawer();
     initFullscreen();
     initLiveWibClock();
 
-    /* Hydrate localized content first, then initialize motion & routing */
+    /* Hydrate localized content first, then initialize motion, widgets & routing */
     applyLanguage(window.RO_APP.state.lang);
     syncFullscreenUI();
     window.RO_APP.motion.init();
     window.RO_APP.router.init();
+    if (window.RO_APP.widgets) window.RO_APP.widgets.init();
   }
 
   if (document.readyState === 'loading') {

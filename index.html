@@ -71,8 +71,31 @@
   <link rel="stylesheet" href="./styles/components.css" />
   <link rel="stylesheet" href="./styles/sections.css" />
   <link rel="stylesheet" href="./styles/casestudy.css" />
+  <link rel="stylesheet" href="./styles/enhancements.css" />
 </head>
 <body>
+  <!-- Cinematic Opening Curtain (~0.85s, 1x per session, auto-skipped on repeat/reduced-motion) -->
+  <div class="boot-curtain" id="bootCurtain" aria-hidden="true">
+    <div class="boot-panel boot-panel-top"></div>
+    <div class="boot-panel boot-panel-bottom"></div>
+    <div class="boot-core">
+      <div class="boot-monogram">RO</div>
+      <div class="boot-meta">INDARUNG VI // PORTFOLIO TELEMETRY</div>
+      <div class="boot-progress-wrap"><div class="boot-progress-fill"></div></div>
+      <div class="boot-pct">00%</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      try {
+        if (sessionStorage.getItem('ro_boot_done') === '1' || document.documentElement.getAttribute('data-motion') === 'reduced') {
+          var el = document.getElementById('bootCurtain');
+          if (el) el.classList.add('is-done');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
   <a href="#mainContent" class="skip-link" data-i18n="skip.main">Lewati ke konten utama</a>
 
   <!-- Global Scroll & Route Progress Indicators -->
@@ -119,6 +142,10 @@
           <button type="button" class="lang-btn active" data-lang="id" aria-pressed="true">ID</button>
           <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
         </div>
+
+        <button type="button" class="icon-btn" id="soundToggle" data-i18n-aria="aria.soundToggle" data-i18n-title="aria.soundToggle" aria-label="Suara Interaksi Halus (Aktif / Mati)" title="Suara Interaksi Halus (Aktif / Mati)" aria-pressed="false">
+          <span id="soundIcon" aria-hidden="true"></span>
+        </button>
 
         <button type="button" class="icon-btn" id="fullscreenToggle" data-i18n-aria="aria.fullscreenEnter" data-i18n-title="aria.fullscreenEnter" aria-label="Mode Layar Penuh (Tekan Esc untuk keluar)" title="Mode Layar Penuh (Tekan Esc untuk keluar)" aria-pressed="false">
           <span id="fullscreenIcon" aria-hidden="true"></span>
@@ -174,7 +201,9 @@
 
       <div class="mobile-drawer-foot">
         <button type="button" class="btn btn-primary btn-sm" data-open-brief data-drawer-close data-i18n="hero.ctaBrief">Ringkasan HRD (60 dtk)</button>
-        <button type="button" class="btn btn-secondary btn-sm" data-open-cmd data-drawer-close data-i18n="nav.cmd">Cari Cepat</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-open-qr="portfolio" data-drawer-close data-i18n="contact.qrTitle">Mode QR Code Presentasi</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-print-pdf data-drawer-close data-i18n="contact.pdfTitle">Simpan / Cetak Ringkasan PDF (HRD)</button>
+        <button type="button" class="btn btn-ghost btn-sm" data-open-cmd data-drawer-close data-i18n="nav.cmd">Cari Cepat</button>
         <a href="https://github.com/RahmaOktoyadi19" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">GitHub Profile ↗</a>
       </div>
     </div>
@@ -271,6 +300,34 @@
             <span class="scroll-line" aria-hidden="true"></span>
             <span data-i18n="hero.scrollCue">Gulir untuk memulai cerita</span>
           </a>
+        </div>
+      </section>
+
+      <!-- VERIFIED IMPACT COUNTER RIBBON (100% FACTUAL AUDIT NUMBERS) -->
+      <section class="impact-ribbon" id="impactRibbon" aria-label="Verified Engineering Metrics">
+        <div class="container">
+          <div class="impact-grid">
+            <div class="impact-item glow-card">
+              <span class="impact-value is-cyan" data-count-target="5406">5.406</span>
+              <span class="impact-label" data-i18n="impact.i1Label">Nomenklatur Alat Pabrik</span>
+              <span class="impact-sub" data-i18n="impact.i1Sub">Master Data SPORA (Indarung II–VI)</span>
+            </div>
+            <div class="impact-item glow-card">
+              <span class="impact-value is-emerald" data-count-target="174">174</span>
+              <span class="impact-label" data-i18n="impact.i2Label">Tes Otomatis Lulus</span>
+              <span class="impact-sub" data-i18n="impact.i2Sub">99 PHPUnit SPORA + 75 Flutter Pindai</span>
+            </div>
+            <div class="impact-item glow-card">
+              <span class="impact-value is-amber" data-count-target="33">33</span>
+              <span class="impact-label" data-i18n="impact.i3Label">Tangkapan Layar Nyata</span>
+              <span class="impact-sub" data-i18n="impact.i3Sub">24 Layar SPORA + 9 Layar Pindai</span>
+            </div>
+            <div class="impact-item glow-card">
+              <span class="impact-value" data-count-target="0">0</span>
+              <span class="impact-label" data-i18n="impact.i4Label">Error Analisis &amp; E2E</span>
+              <span class="impact-sub" data-i18n="impact.i4Sub">Audit Statis &amp; Playwright Bersih</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -597,6 +654,13 @@
         </div>
       </section>
 
+      <!-- Interactive "Before vs After SPORA" Problem Comparator -->
+      <section class="case-section" style="padding-top:6px;">
+        <div class="container">
+          <div id="sporaComparator"></div>
+        </div>
+      </section>
+
       <!-- 10 Verified Capabilities -->
       <section class="case-section" style="padding-top:6px;">
         <div class="container">
@@ -657,6 +721,7 @@
             <p class="lead-text" data-i18n="spora.archDesc">Integrasi rapi antara Laravel 13, Alpine.js SPA, Tailwind v4, real-time Echo/Pusher, Leaflet GIS, kompresi media ganda, &amp; PWA.</p>
           </div>
 
+          <div id="sporaLiveArch"></div>
           <div class="arch-flow" id="sporaArchFlow"></div>
 
           <div class="table-wrap" data-reveal>
@@ -847,6 +912,7 @@
             <p class="lead-text" data-i18n="pindai.archDesc">Pemisahan lapisan yang jelas antara input media, pra-pemrosesan citra, mesin OCR Hybrid, editor WYSIWYG, penyimpanan lokal, terjemahan, dan ekspor.</p>
           </div>
 
+          <div id="pindaiLiveArch"></div>
           <div class="arch-flow" id="archFlow"></div>
 
           <div class="table-wrap" data-reveal>
@@ -1055,6 +1121,34 @@
     </div>
   </div>
 
+  <!-- ================= SCANNABLE QR CODE PRESENTATION MODAL ================= -->
+  <div class="modal-backdrop" id="qrModal" role="dialog" aria-modal="true" aria-label="QR Code Presentation Mode">
+    <div class="qr-dialog">
+      <span class="kicker kicker-amber" style="margin-bottom:4px;justify-content:center;" data-i18n="qr.kicker">MODE PRESENTASI • QR CODE</span>
+      <h3 style="font-family:var(--font-display);font-size:1.3rem;margin:0;" data-i18n="qr.title">Pindai dengan Kamera HP</h3>
+
+      <div class="qr-tabs" role="tablist" aria-label="Pilih Target QR Code">
+        <button type="button" role="tab" aria-selected="true" class="qr-tab is-active" data-qr-tab="portfolio" data-i18n="qr.tabPortfolio">Portfolio</button>
+        <button type="button" role="tab" aria-selected="false" class="qr-tab" data-qr-tab="spora" data-i18n="qr.tabSpora">SPORA Live</button>
+      </div>
+
+      <div class="qr-code-box">
+        <img id="qrImage" src="./assets/brand/qr-portfolio.svg" alt="QR Code Portfolio Rahma Oktoyadi" width="208" height="208" />
+      </div>
+
+      <div class="qr-url-pill" id="qrUrlText">https://rahmaoktoyadi19.github.io/rahma19app/</div>
+      <p id="qrNoteText" style="font-size:0.82rem;color:var(--text-secondary);margin:0 0 16px;"></p>
+
+      <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
+        <button type="button" class="btn btn-primary btn-sm" id="qrCopyUrlBtn" data-i18n="qr.copyBtn">Salin Tautan</button>
+        <button type="button" class="btn btn-secondary btn-sm" id="qrCloseBtn" data-i18n="qr.closeBtn">Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PRINT-ONLY EXECUTIVE PDF DOSSIER ================= -->
+  <section id="printDossier" class="print-dossier" aria-hidden="true"></section>
+
   <!-- Subtle Cinema Toast Notification -->
   <div class="cinema-toast" id="cinemaToast" role="status" aria-live="polite"></div>
 
@@ -1071,10 +1165,12 @@
 
   <!-- Modular Application Engines -->
   <script defer src="./scripts/theme.js"></script>
+  <script defer src="./scripts/sound.js"></script>
   <script defer src="./scripts/render-home.js"></script>
   <script defer src="./scripts/render-cases.js"></script>
   <script defer src="./scripts/lightbox.js"></script>
   <script defer src="./scripts/command-palette.js"></script>
+  <script defer src="./scripts/interactive-widgets.js"></script>
   <script defer src="./scripts/router.js"></script>
   <script defer src="./scripts/motion.js"></script>
   <script defer src="./scripts/app.js"></script>

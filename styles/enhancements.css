@@ -1,0 +1,670 @@
+/* ==========================================================================
+   CINEMATIC ENHANCEMENTS — BOOT CURTAIN, IMPACT COUNTER, LIVE ARCHITECTURE,
+   SPORA COMPARATOR, QR PRESENTATION MODAL, SOUND UI & EXECUTIVE PDF PRINT
+   ========================================================================== */
+
+/* ================= 1. CINEMATIC OPENING CURTAIN (~0.85s, 1x/SESSION) ================= */
+.boot-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  pointer-events: all;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.boot-curtain.is-done {
+  display: none;
+}
+
+.boot-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50.5%;
+  background: #050811;
+  will-change: transform;
+}
+
+.boot-panel-top {
+  top: 0;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.22);
+}
+
+.boot-panel-bottom {
+  bottom: 0;
+  border-top: 1px solid rgba(34, 211, 238, 0.22);
+}
+
+.boot-core {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 24px;
+  text-align: center;
+  will-change: opacity, transform;
+}
+
+.boot-monogram {
+  width: 62px;
+  height: 62px;
+  border-radius: 16px;
+  background: #0b1120;
+  border: 1px solid rgba(34, 211, 238, 0.45);
+  box-shadow: 0 0 40px rgba(37, 99, 235, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #f1f5f9;
+  position: relative;
+}
+
+.boot-monogram::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #f59e0b;
+}
+
+.boot-meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.boot-progress-wrap {
+  width: min(240px, 68vw);
+  height: 2px;
+  border-radius: 99px;
+  background: rgba(148, 163, 184, 0.18);
+  overflow: hidden;
+}
+
+.boot-progress-fill {
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, #2563eb, #22d3ee, #f59e0b);
+}
+
+.boot-pct {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #22d3ee;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ================= 2. VERIFIED IMPACT COUNTER RIBBON ================= */
+.impact-ribbon {
+  padding: 26px 0;
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  background: var(--bg-surface-1);
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.impact-item {
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-hairline);
+  box-shadow: var(--specular-top);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.impact-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.45rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.impact-value.is-cyan { color: var(--accent-cyan); }
+.impact-value.is-amber { color: var(--accent-amber); }
+.impact-value.is-emerald { color: var(--success); }
+
+.impact-label {
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.impact-sub {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ================= 3. INTERACTIVE LIVE ARCHITECTURE DIAGRAM ================= */
+.live-arch-wrap {
+  margin-bottom: 24px;
+  padding: clamp(18px, 2.8vw, 28px);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--specular-top), var(--shadow-sm);
+}
+
+.live-arch-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.live-arch-hint {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.live-arch-track {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.live-arch-line-svg {
+  position: absolute;
+  top: 26px;
+  left: 6%;
+  width: 88%;
+  height: 6px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.live-arch-path-bg {
+  stroke: var(--border-strong);
+  stroke-width: 2;
+  fill: none;
+}
+
+.live-arch-path-pulse {
+  stroke: var(--case-accent, var(--accent-cyan));
+  stroke-width: 2.5;
+  stroke-dasharray: 10 14;
+  fill: none;
+  animation: archFlowDash 1.8s linear infinite;
+}
+
+@keyframes archFlowDash {
+  from { stroke-dashoffset: 48; }
+  to { stroke-dashoffset: 0; }
+}
+
+.live-arch-node {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 14px 10px;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-hairline);
+  transition: border-color 0.2s ease, transform 0.22s var(--ease-expo), background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.live-arch-node:hover {
+  border-color: var(--border-active);
+  transform: translateY(-2px);
+}
+
+.live-arch-node.is-active {
+  border-color: var(--case-accent, var(--accent-cyan));
+  background: var(--bg-canvas);
+  box-shadow: 0 0 0 3px var(--accent-cyan-soft);
+}
+
+.live-arch-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--bg-canvas);
+  border: 1.5px solid var(--case-accent, var(--accent-cyan));
+  color: var(--case-accent, var(--accent-cyan));
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+.live-arch-node.is-active .live-arch-badge {
+  background: var(--case-accent, var(--accent-cyan));
+  color: #ffffff;
+}
+
+.live-arch-node strong {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.live-arch-inspector {
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-hairline);
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 18px;
+  align-items: center;
+}
+
+.live-arch-inspector h4 {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  margin: 0 0 6px;
+}
+
+.live-arch-inspector p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+}
+
+.live-arch-modules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: flex-end;
+}
+
+/* ================= 4. SPORA "SEBELUM vs SESUDAH" PROBLEM COMPARATOR ================= */
+.comparator-wrap {
+  padding: clamp(20px, 3vw, 32px);
+  border-radius: var(--radius-xl);
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--specular-top), var(--shadow-md);
+}
+
+.comparator-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.comparator-switch {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-hairline);
+}
+
+.comp-tab {
+  padding: 8px 16px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.2s var(--ease-expo);
+}
+
+.comp-tab.is-active.is-before {
+  background: rgba(245, 158, 11, 0.18);
+  color: var(--accent-amber);
+}
+
+.comp-tab.is-active.is-after {
+  background: var(--proj-spora);
+  color: #ffffff;
+}
+
+.comparator-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.sim-screen {
+  padding: 18px;
+  border-radius: var(--radius-md);
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-strong);
+  display: grid;
+  gap: 10px;
+}
+
+.sim-screen-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-hairline);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.wa-bubble {
+  padding: 9px 12px;
+  border-radius: 12px;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-hairline);
+  font-size: 0.81rem;
+  color: var(--text-secondary);
+}
+
+.wa-bubble.is-buried {
+  border-color: rgba(245, 158, 11, 0.35);
+  background: var(--accent-amber-soft);
+  color: var(--text-primary);
+}
+
+.wa-bubble small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.spora-structured-card {
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--bg-surface-2);
+  border-left: 3px solid var(--proj-spora);
+  border-top: 1px solid var(--border-hairline);
+  border-right: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  display: grid;
+  gap: 9px;
+}
+
+.comparator-points {
+  display: grid;
+  gap: 12px;
+}
+
+.comparator-points h4 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.comparator-points p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* ================= 5. QR CODE PRESENTATION MODAL ================= */
+.qr-dialog {
+  width: 100%;
+  max-width: 440px;
+  border-radius: var(--radius-xl);
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-lg), var(--specular-top);
+  padding: 24px;
+  text-align: center;
+  animation: modalPop 0.24s var(--ease-expo) both;
+}
+
+.qr-tabs {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-hairline);
+  margin: 14px 0 18px;
+}
+
+.qr-tab {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 6px 13px;
+  border-radius: var(--radius-pill);
+}
+
+.qr-tab.is-active {
+  background: var(--accent-primary);
+  color: #ffffff;
+}
+
+.qr-code-box {
+  width: 232px;
+  height: 232px;
+  margin: 0 auto 16px;
+  padding: 12px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.55);
+  display: grid;
+  place-items: center;
+}
+
+.qr-code-box img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.qr-url-pill {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--accent-cyan);
+  padding: 7px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-hairline);
+  margin-bottom: 14px;
+  word-break: break-all;
+}
+
+/* ================= 6. EXECUTIVE PDF PRINT DOSSIER (@media print) ================= */
+.print-dossier {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 15mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+  }
+
+  body > *:not(#printDossier) {
+    display: none !important;
+  }
+
+  #printDossier {
+    display: block !important;
+    color: #0f172a !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  }
+
+  .pd-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #0f172a;
+    margin-bottom: 14px;
+  }
+
+  .pd-header h1 {
+    font-size: 19pt;
+    margin: 0 0 3px;
+    letter-spacing: -0.02em;
+  }
+
+  .pd-header p {
+    margin: 0;
+    font-size: 9.5pt;
+    color: #334155;
+  }
+
+  .pd-qr {
+    width: 72px;
+    height: 72px;
+    border: 1px solid #cbd5e1;
+    padding: 3px;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .pd-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .pd-metric {
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 8px 10px;
+  }
+
+  .pd-metric strong {
+    display: block;
+    font-size: 13pt;
+    color: #1d4ed8;
+  }
+
+  .pd-metric span {
+    font-size: 8pt;
+    color: #475569;
+  }
+
+  .pd-section {
+    margin-bottom: 13px;
+  }
+
+  .pd-section h2 {
+    font-size: 11pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #1d4ed8;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin: 0 0 7px;
+  }
+
+  .pd-section ul {
+    margin: 0;
+    padding-left: 16px;
+  }
+
+  .pd-section li {
+    margin-bottom: 4px;
+    font-size: 9.3pt;
+  }
+
+  .pd-footer {
+    margin-top: 14px;
+    padding-top: 8px;
+    border-top: 1px solid #cbd5e1;
+    font-size: 8.5pt;
+    color: #475569;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+/* ================= RESPONSIVE ENHANCEMENTS ================= */
+@media (max-width: 1180px) {
+  #soundToggle {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .live-arch-inspector,
+  .comparator-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .live-arch-modules {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 760px) {
+  .live-arch-line-svg {
+    display: none;
+  }
+
+  .live-arch-track {
+    grid-template-columns: 1fr;
+  }
+
+  .live-arch-node {
+    flex-direction: row;
+    text-align: left;
+    padding: 12px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .impact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+html[data-motion="reduced"] .boot-curtain {
+  display: none !important;
+}
+
+html[data-motion="reduced"] .live-arch-path-pulse {
+  animation: none !important;
+}
