@@ -1,0 +1,142 @@
+/* ==========================================================================
+   OBSIDIAN FORGE DESIGN SYSTEM — TOKENS
+   Dark Cinematic Primary + Light Editorial Mode (100% WCAG 2.1 AA Verified)
+   ========================================================================== */
+
+:root,
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Layered Obsidian & Deep Navy Surfaces */
+  --bg-canvas: #050811;
+  --bg-surface-1: #0b1120;
+  --bg-surface-2: #111a2e;
+  --bg-surface-3: #18233c;
+  --bg-glass: rgba(5, 8, 17, 0.78);
+  --bg-glass-strong: rgba(8, 13, 26, 0.9);
+
+  /* Typography Ink Hierarchy */
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  /* Hairline Borders & Specular Highlights */
+  --border-hairline: rgba(148, 163, 184, 0.13);
+  --border-strong: rgba(148, 163, 184, 0.25);
+  --border-active: rgba(34, 211, 238, 0.42);
+  --specular-top: inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  /* Brand & Industrial Accents (AA Verified) */
+  --accent-primary: #2563eb;         /* #fff on #2563eb = 5.17:1 AA */
+  --accent-primary-hover: #1d4ed8;   /* #fff on #1d4ed8 = 6.70:1 AA+ */
+  --accent-text: #60a5fa;            /* on #111a2e = 6.79:1 AA+ */
+  --accent-soft: rgba(37, 99, 235, 0.16);
+  --accent-border: rgba(96, 165, 250, 0.36);
+
+  --accent-cyan: #22d3ee;            /* on #0b1120 = 10.5:1 AAA */
+  --accent-cyan-soft: rgba(34, 211, 238, 0.12);
+
+  --accent-amber: #f59e0b;           /* Industrial Safety / Indarung Ops */
+  --accent-amber-soft: rgba(245, 158, 11, 0.13);
+  --accent-amber-border: rgba(245, 158, 11, 0.35);
+
+  --accent-violet: #818cf8;          /* Subtle ambient depth only */
+
+  /* Project-Specific Signature Accents */
+  --proj-spora: #f43f5e;
+  --proj-spora-soft: rgba(244, 63, 94, 0.14);
+  --proj-pindai: #3b82f6;
+  --proj-pindai-soft: rgba(59, 130, 246, 0.15);
+  --proj-apd: #10b981;
+  --proj-apd-soft: rgba(16, 185, 129, 0.14);
+
+  /* Status */
+  --success: #22c55e;
+  --success-soft: rgba(34, 197, 94, 0.14);
+  --success-border: rgba(34, 197, 94, 0.32);
+
+  /* Architectural Grid & Elevation Shadows */
+  --grid-line: rgba(148, 163, 184, 0.045);
+  --shadow-sm: 0 2px 10px -2px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 18px 46px -16px rgba(0, 0, 0, 0.72);
+  --shadow-lg: 0 32px 84px -22px rgba(0, 0, 0, 0.88);
+  --shadow-glow-blue: 0 14px 36px -10px rgba(37, 99, 235, 0.55);
+
+  /* Typography Stacks */
+  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Fluid Spacing & Layout */
+  --container-max: 1280px;
+  --container-wide: 1400px;
+  --nav-height: 70px;
+  --section-py: clamp(72px, 9.5vw, 132px);
+
+  /* Radius Scale */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* Motion Physics */
+  --ease-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 160ms;
+  --dur-base: 280ms;
+  --dur-slow: 560ms;
+}
+
+/* ================= LIGHT EDITORIAL COUNTERPART ================= */
+html[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-canvas: #f6f8fc;
+  --bg-surface-1: #ffffff;
+  --bg-surface-2: #eef2f8;
+  --bg-surface-3: #e2e8f3;
+  --bg-glass: rgba(246, 248, 252, 0.84);
+  --bg-glass-strong: rgba(255, 255, 255, 0.94);
+
+  --text-primary: #0b1221;
+  --text-secondary: #334155;
+  --text-muted: #475569;             /* on #eef2f8 = 6.6:1 AA+ */
+
+  --border-hairline: rgba(15, 23, 42, 0.09);
+  --border-strong: rgba(15, 23, 42, 0.17);
+  --border-active: rgba(29, 78, 216, 0.36);
+  --specular-top: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  --accent-primary: #1d4ed8;         /* #fff on #1d4ed8 = 6.70:1 AA+ */
+  --accent-primary-hover: #1e40af;
+  --accent-text: #1d4ed8;            /* on #eef2f8 = 5.9:1 AA+ */
+  --accent-soft: rgba(29, 78, 216, 0.09);
+  --accent-border: rgba(29, 78, 216, 0.28);
+
+  --accent-cyan: #0369a1;            /* AA on light */
+  --accent-cyan-soft: rgba(3, 105, 161, 0.1);
+
+  --accent-amber: #b45309;           /* AA on light */
+  --accent-amber-soft: rgba(180, 83, 9, 0.1);
+  --accent-amber-border: rgba(180, 83, 9, 0.3);
+
+  --accent-violet: #4f46e5;
+
+  --proj-spora: #be123c;
+  --proj-spora-soft: rgba(190, 18, 60, 0.1);
+  --proj-pindai: #1d4ed8;
+  --proj-pindai-soft: rgba(29, 78, 216, 0.1);
+  --proj-apd: #047857;
+  --proj-apd-soft: rgba(4, 120, 87, 0.1);
+
+  --success: #15803d;
+  --success-soft: rgba(21, 128, 61, 0.11);
+  --success-border: rgba(21, 128, 61, 0.28);
+
+  --grid-line: rgba(15, 23, 42, 0.045);
+  --shadow-sm: 0 2px 10px -2px rgba(15, 23, 42, 0.07);
+  --shadow-md: 0 16px 40px -16px rgba(15, 23, 42, 0.14);
+  --shadow-lg: 0 28px 70px -22px rgba(15, 23, 42, 0.2);
+  --shadow-glow-blue: 0 12px 28px -10px rgba(29, 78, 216, 0.42);
+}

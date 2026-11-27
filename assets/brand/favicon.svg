@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="100%" stop-color="#050811"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="10" y1="10" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)"/>
+  <rect x="2" y="2" width="60" height="60" rx="14" stroke="url(#acc)" stroke-width="2" stroke-opacity="0.7"/>
+  <!-- Corner industrial viewfinder ticks -->
+  <path d="M12 18V12H18M52 18V12H46M12 46V52H18M52 46V52H46" stroke="#22D3EE" stroke-width="1.8" stroke-linecap="round" stroke-opacity="0.65"/>
+  <!-- Monogram RO -->
+  <text x="32" y="39" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="800" font-size="22" letter-spacing="-1" fill="#F1F5F9">RO</text>
+  <!-- Industrial Amber telemetry dot -->
+  <circle cx="51" cy="13" r="3" fill="#F59E0B"/>
+</svg>
