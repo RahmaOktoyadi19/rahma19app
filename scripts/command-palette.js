@@ -93,6 +93,14 @@
       },
       {
         group: l === 'en' ? 'Quick Actions' : 'Aksi Cepat',
+        title: l === 'en' ? 'Toggle Fullscreen Cinema Mode (Esc to exit)' : 'Mode Layar Penuh / Fullscreen (Tekan Esc untuk keluar)',
+        sub: l === 'en' ? 'Hide browser tabs & address bar for clean presentation' : 'Sembunyikan tab & address bar browser untuk tampilan presentasi',
+        tag: 'FULLSCREEN',
+        keywords: 'fullscreen layar penuh f11 esc presentasi cinema maximize',
+        action: function () { if (window.RO_APP.fullscreen) window.RO_APP.fullscreen.toggle(); }
+      },
+      {
+        group: l === 'en' ? 'Quick Actions' : 'Aksi Cepat',
         title: l === 'en' ? 'Toggle Smooth / Reduced Motion Animations' : 'Ganti Mode Animasi (Smooth / Reduced Motion)',
         sub: l === 'en' ? 'Control GSAP scroll animations & Lenis smooth scroll' : 'Atur animasi scroll GSAP & Lenis smooth scroll',
         tag: 'MOTION',

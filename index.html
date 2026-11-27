@@ -120,6 +120,10 @@
           <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
         </div>
 
+        <button type="button" class="icon-btn" id="fullscreenToggle" data-i18n-aria="aria.fullscreenEnter" data-i18n-title="aria.fullscreenEnter" aria-label="Mode Layar Penuh (Tekan Esc untuk keluar)" title="Mode Layar Penuh (Tekan Esc untuk keluar)" aria-pressed="false">
+          <span id="fullscreenIcon" aria-hidden="true"></span>
+        </button>
+
         <button type="button" class="icon-btn" id="motionToggle" data-i18n-aria="aria.motionToggle" data-i18n-title="aria.motionToggle" aria-label="Ganti Mode Animasi (Smooth / Reduced)" title="Ganti Mode Animasi (Smooth / Reduced)">
           <span id="motionIcon" aria-hidden="true"></span>
         </button>
@@ -887,6 +891,9 @@
       <div class="lb-thumbs" id="lbThumbs"></div>
     </div>
   </div>
+
+  <!-- Subtle Cinema Toast Notification -->
+  <div class="cinema-toast" id="cinemaToast" role="status" aria-live="polite"></div>
 
   <!-- Local Offline-Ready Motion Libraries (Zero CDN Single-Point-of-Failure) -->
   <script defer src="./assets/vendor/gsap.min.js"></script>
