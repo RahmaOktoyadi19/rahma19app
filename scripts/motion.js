@@ -17,6 +17,7 @@
 
   var lenis = null;
   var fallbackObserver = null;
+  var caseRevealObserver = null;
   var activeTriggers = [];
   var activeTweens = [];
 
@@ -45,7 +46,7 @@
       if (lenis) { lenis.destroy(); lenis = null; }
       clearAllScrollAnimations();
       if (window.gsap) {
-        window.gsap.set('.value-card, .timeline-node, .project-showcase-card, .tech-group-card, .exp-card, .contact-panel, .case-card, .shot-card, .arch-step, .split-word, .proj-visual-stage, .shot-preview', {
+        window.gsap.set('.value-card, .timeline-node, .project-showcase-card, .tech-group-card, .exp-card, .contact-panel, .case-card, .shot-card, .arch-step, .table-wrap, .evo-stage, .dossier-notice, .pwa-guide-card, .pwa-phone-stage, .split-word, .proj-visual-stage, .shot-preview', {
           clearProps: 'all'
         });
       }
@@ -67,6 +68,11 @@
   }
 
   function clearAllScrollAnimations() {
+    if (caseRevealObserver) {
+      caseRevealObserver.disconnect();
+      caseRevealObserver = null;
+    }
+
     activeTriggers.forEach(function (tr) {
       if (tr && typeof tr.kill === 'function') tr.kill();
     });
@@ -637,28 +643,36 @@
       ));
     }
 
-    /* Batch-staggered 3D reveal for feature cards, screenshot cards, architecture steps & tables */
+    /* Layout-shift-proof 3D reveal for feature cards, screenshot cards, PWA guide, architecture & tables */
     var batchTargets = viewEl.querySelectorAll('.case-card, .shot-card, .arch-step, .table-wrap, .evo-stage, .dossier-notice, .pwa-guide-card, .pwa-phone-stage');
     if (batchTargets.length) {
-      gsap.set(batchTargets, { y: 42, opacity: 0, scale: 0.95, rotateX: 6, transformPerspective: 1000 });
-      var batchTr = ScrollTrigger.batch(batchTargets, {
-        start: 'top 89%',
-        once: true,
-        onEnter: function (batch) {
-          gsap.to(batch, {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            rotateX: 0,
-            duration: 0.78,
-            stagger: 0.08,
-            ease: 'power3.out',
-            clearProps: 'transform'
+      if ('IntersectionObserver' in window) {
+        gsap.set(batchTargets, { y: 34, opacity: 0, scale: 0.96, rotateX: 5, transformPerspective: 1000 });
+        caseRevealObserver = new IntersectionObserver(function (entries) {
+          var entering = [];
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entering.push(entry.target);
+              caseRevealObserver.unobserve(entry.target);
+            }
           });
-        }
-      });
-      if (Array.isArray(batchTr)) {
-        batchTr.forEach(function (t) { activeTriggers.push(t); });
+          if (entering.length) {
+            trackTween(gsap.to(entering, {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              rotateX: 0,
+              duration: 0.7,
+              stagger: 0.06,
+              ease: 'power3.out',
+              overwrite: 'auto',
+              clearProps: 'transform'
+            }));
+          }
+        }, { rootMargin: '0px 0px -4% 0px', threshold: 0.03 });
+        batchTargets.forEach(function (el) { caseRevealObserver.observe(el); });
+      } else {
+        gsap.set(batchTargets, { clearProps: 'all' });
       }
     }
   }

@@ -492,8 +492,7 @@
     var navQrBtn = document.getElementById('qrNavbarBtn');
     if (navQrBtn) {
       navQrBtn.addEventListener('click', function () {
-        var curView = window.RO_APP.router && window.RO_APP.router.getCurrentView();
-        openQrModal(curView === 'spora' ? 'spora' : 'portfolio');
+        openQrModal('portfolio');
       });
     }
 
