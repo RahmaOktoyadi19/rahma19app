@@ -121,6 +121,9 @@
     if (window.RO_APP.motion) {
       window.RO_APP.motion.refresh(route.view);
     }
+    if (window.RO_APP.widgets && window.RO_APP.widgets.onViewEnter) {
+      window.RO_APP.widgets.onViewEnter(route.view);
+    }
   }
 
   function handleRoute(initial) {

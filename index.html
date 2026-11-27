@@ -66,12 +66,12 @@
   </script>
 
   <!-- Modular Obsidian Forge Design System -->
-  <link rel="stylesheet" href="./styles/tokens.css?v=20261127d" />
-  <link rel="stylesheet" href="./styles/base.css?v=20261127d" />
-  <link rel="stylesheet" href="./styles/components.css?v=20261127d" />
-  <link rel="stylesheet" href="./styles/sections.css?v=20261127d" />
-  <link rel="stylesheet" href="./styles/casestudy.css?v=20261127d" />
-  <link rel="stylesheet" href="./styles/enhancements.css?v=20261127d" />
+  <link rel="stylesheet" href="./styles/tokens.css?v=20261127e" />
+  <link rel="stylesheet" href="./styles/base.css?v=20261127e" />
+  <link rel="stylesheet" href="./styles/components.css?v=20261127e" />
+  <link rel="stylesheet" href="./styles/sections.css?v=20261127e" />
+  <link rel="stylesheet" href="./styles/casestudy.css?v=20261127e" />
+  <link rel="stylesheet" href="./styles/enhancements.css?v=20261127e" />
   <noscript><style>.boot-curtain{display:none!important;}</style></noscript>
 </head>
 <body>
@@ -155,6 +155,10 @@
           <button type="button" class="lang-btn active" data-lang="id" aria-pressed="true">ID</button>
           <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
         </div>
+
+        <button type="button" class="icon-btn" id="qrNavbarBtn" data-i18n-aria="aria.qrNav" data-i18n-title="aria.qrNav" aria-label="Tampilkan QR Code Presentasi (Portfolio &amp; SPORA)" title="Tampilkan QR Code Presentasi (Portfolio &amp; SPORA)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14h1v3h-1zM14 20h3v1h-3zM20 19h1v2h-1z"/></svg>
+        </button>
 
         <button type="button" class="icon-btn" id="soundToggle" data-i18n-aria="aria.soundToggle" data-i18n-title="aria.soundToggle" aria-label="Suara Interaksi Halus (Aktif / Mati)" title="Suara Interaksi Halus (Aktif / Mati)" aria-pressed="false">
           <span id="soundIcon" aria-hidden="true"></span>
@@ -313,34 +317,6 @@
             <span class="scroll-line" aria-hidden="true"></span>
             <span data-i18n="hero.scrollCue">Gulir untuk memulai cerita</span>
           </a>
-        </div>
-      </section>
-
-      <!-- VERIFIED IMPACT COUNTER RIBBON (100% FACTUAL AUDIT NUMBERS) -->
-      <section class="impact-ribbon" id="impactRibbon" aria-label="Verified Engineering Metrics">
-        <div class="container">
-          <div class="impact-grid">
-            <div class="impact-item glow-card">
-              <span class="impact-value is-cyan" data-count-target="5406">5.406</span>
-              <span class="impact-label" data-i18n="impact.i1Label">Nomenklatur Alat Pabrik</span>
-              <span class="impact-sub" data-i18n="impact.i1Sub">Master Data SPORA (Indarung II–VI)</span>
-            </div>
-            <div class="impact-item glow-card">
-              <span class="impact-value is-emerald" data-count-target="174">174</span>
-              <span class="impact-label" data-i18n="impact.i2Label">Tes Otomatis Lulus</span>
-              <span class="impact-sub" data-i18n="impact.i2Sub">99 PHPUnit SPORA + 75 Flutter Pindai</span>
-            </div>
-            <div class="impact-item glow-card">
-              <span class="impact-value is-amber" data-count-target="33">33</span>
-              <span class="impact-label" data-i18n="impact.i3Label">Tangkapan Layar Nyata</span>
-              <span class="impact-sub" data-i18n="impact.i3Sub">24 Layar SPORA + 9 Layar Pindai</span>
-            </div>
-            <div class="impact-item glow-card">
-              <span class="impact-value" data-count-target="0">0</span>
-              <span class="impact-label" data-i18n="impact.i4Label">Error Analisis &amp; E2E</span>
-              <span class="impact-sub" data-i18n="impact.i4Sub">Audit Statis &amp; Playwright Bersih</span>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -577,6 +553,10 @@
                 <span data-i18n="spora.openApp">Buka Aplikasi SPORA (PWA) ↗</span>
                 <span class="dl-size">forum.sp-link.id</span>
               </a>
+              <button type="button" class="btn btn-secondary btn-sm" data-open-qr="spora">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14h1v3h-1zM14 20h3v1h-3zM20 19h1v2h-1z"/></svg>
+                <span data-i18n="spora.qrBtn">QR SPORA</span>
+              </button>
               <a href="#spora-pwa" class="btn btn-secondary btn-sm" data-i18n="spora.jumpPwa">Panduan Instal PWA ↓</a>
               <a href="#spora-gallery" class="btn btn-secondary btn-sm" data-i18n="spora.jumpGallery">Galeri Screenshot (24)</a>
               <span class="chip chip-mono" data-i18n="pindai.repoPrivateNote">Repositori kode sumber bersifat privat / tersedia atas permintaan</span>
@@ -1166,26 +1146,26 @@
   <div class="cinema-toast" id="cinemaToast" role="status" aria-live="polite"></div>
 
   <!-- Local Offline-Ready Motion Libraries (Zero CDN Single-Point-of-Failure) -->
-  <script defer src="./assets/vendor/gsap.min.js?v=20261127d"></script>
-  <script defer src="./assets/vendor/ScrollTrigger.min.js?v=20261127d"></script>
-  <script defer src="./assets/vendor/lenis.min.js?v=20261127d"></script>
+  <script defer src="./assets/vendor/gsap.min.js?v=20261127e"></script>
+  <script defer src="./assets/vendor/ScrollTrigger.min.js?v=20261127e"></script>
+  <script defer src="./assets/vendor/lenis.min.js?v=20261127e"></script>
 
   <!-- Modular Portfolio Data -->
-  <script defer src="./data/i18n.js?v=20261127d"></script>
-  <script defer src="./data/internship.js?v=20261127d"></script>
-  <script defer src="./data/spora-data.js?v=20261127d"></script>
-  <script defer src="./data/projects.js?v=20261127d"></script>
+  <script defer src="./data/i18n.js?v=20261127e"></script>
+  <script defer src="./data/internship.js?v=20261127e"></script>
+  <script defer src="./data/spora-data.js?v=20261127e"></script>
+  <script defer src="./data/projects.js?v=20261127e"></script>
 
   <!-- Modular Application Engines -->
-  <script defer src="./scripts/theme.js?v=20261127d"></script>
-  <script defer src="./scripts/sound.js?v=20261127d"></script>
-  <script defer src="./scripts/render-home.js?v=20261127d"></script>
-  <script defer src="./scripts/render-cases.js?v=20261127d"></script>
-  <script defer src="./scripts/lightbox.js?v=20261127d"></script>
-  <script defer src="./scripts/command-palette.js?v=20261127d"></script>
-  <script defer src="./scripts/interactive-widgets.js?v=20261127d"></script>
-  <script defer src="./scripts/router.js?v=20261127d"></script>
-  <script defer src="./scripts/motion.js?v=20261127d"></script>
-  <script defer src="./scripts/app.js?v=20261127d"></script>
+  <script defer src="./scripts/theme.js?v=20261127e"></script>
+  <script defer src="./scripts/sound.js?v=20261127e"></script>
+  <script defer src="./scripts/render-home.js?v=20261127e"></script>
+  <script defer src="./scripts/render-cases.js?v=20261127e"></script>
+  <script defer src="./scripts/lightbox.js?v=20261127e"></script>
+  <script defer src="./scripts/command-palette.js?v=20261127e"></script>
+  <script defer src="./scripts/interactive-widgets.js?v=20261127e"></script>
+  <script defer src="./scripts/router.js?v=20261127e"></script>
+  <script defer src="./scripts/motion.js?v=20261127e"></script>
+  <script defer src="./scripts/app.js?v=20261127e"></script>
 </body>
 </html>

@@ -618,9 +618,48 @@
 }
 
 /* ================= RESPONSIVE ENHANCEMENTS ================= */
-@media (max-width: 1180px) {
-  #soundToggle {
+.metric-card strong {
+  font-variant-numeric: tabular-nums;
+}
+
+#qrNavbarBtn:hover {
+  color: var(--accent-amber);
+  border-color: rgba(245, 158, 11, 0.45);
+}
+
+@media (max-width: 1340px) {
+  .nav-link {
+    padding: 7px 10px;
+  }
+
+  .nav-controls {
+    gap: 6px;
+  }
+
+  .cmd-trigger-label {
     display: none;
+  }
+}
+
+@media (max-width: 1180px) {
+  #soundToggle,
+  #motionToggle {
+    display: none;
+  }
+}
+
+@media (max-width: 350px) {
+  .nav-controls {
+    gap: 4px;
+  }
+
+  .icon-btn {
+    width: 31px;
+    height: 31px;
+  }
+
+  .brand-name {
+    font-size: 0.74rem;
   }
 }
 

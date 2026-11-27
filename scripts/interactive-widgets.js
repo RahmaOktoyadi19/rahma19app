@@ -108,69 +108,103 @@
     }
   }
 
-  /* ================= 2. VERIFIED IMPACT COUNTER RIBBON ================= */
+  /* ================= 2. CASE STUDY AUDIT METRICS COUNT-UP (SPORA & PINDAI) ================= */
+  var metricTweens = [];
+  var metricTriggers = [];
+
   function formatCount(val) {
     var sep = lang() === 'en' ? ',' : '.';
     return String(Math.round(val)).replace(/\B(?=(\d{3})+(?!\d))/g, sep);
   }
 
-  function syncImpactFormatting() {
-    document.querySelectorAll('[data-count-target]').forEach(function (el) {
-      var target = Number(el.getAttribute('data-count-target')) || 0;
-      if (impactAnimated || document.documentElement.getAttribute('data-motion') === 'reduced') {
-        el.textContent = formatCount(target);
-      }
-    });
+  function clearCaseMetricAnims() {
+    metricTweens.forEach(function (tw) { try { tw.kill(); } catch (e) {} });
+    metricTweens = [];
+    metricTriggers.forEach(function (st) { try { st.kill(); } catch (e) {} });
+    metricTriggers = [];
   }
 
-  function initImpactCounters() {
-    var ribbon = document.getElementById('impactRibbon');
-    if (!ribbon) return;
-    var els = ribbon.querySelectorAll('[data-count-target]');
+  function getMetricFinalText(el) {
+    var key = el.getAttribute('data-i18n');
+    var dict = window.PORTFOLIO_DATA && window.PORTFOLIO_DATA.i18n && window.PORTFOLIO_DATA.i18n[lang()];
+    if (key && dict && dict[key] !== undefined) return dict[key];
+    return el.textContent.trim();
+  }
+
+  function parseLargestNumber(text) {
+    var re = /\d{1,3}(?:[.,]\d{3})+|\d+/g;
+    var match;
+    var best = null;
+    while ((match = re.exec(text)) !== null) {
+      var numeric = Number(match[0].replace(/[.,]/g, ''));
+      if (!isNaN(numeric) && (!best || numeric > best.target)) {
+        best = {
+          target: numeric,
+          index: match.index,
+          length: match[0].length
+        };
+      }
+    }
+    return best;
+  }
+
+  function animateCaseMetrics(viewName) {
+    clearCaseMetricAnims();
+    var viewId = viewName === 'spora' ? 'sporaView' : (viewName === 'pindai' ? 'pindaiView' : null);
+    if (!viewId) return;
+    var view = document.getElementById(viewId);
+    if (!view) return;
+    var grid = view.querySelector('.metrics-grid');
+    if (!grid) return;
+    var els = grid.querySelectorAll('.metric-card strong');
     if (!els.length) return;
 
-    function finishImmediately() {
-      impactAnimated = true;
-      els.forEach(function (el) {
-        el.textContent = formatCount(Number(el.getAttribute('data-count-target')) || 0);
+    var reduced = document.documentElement.getAttribute('data-motion') === 'reduced';
+    if (reduced || !window.gsap) {
+      els.forEach(function (el) { el.textContent = getMetricFinalText(el); });
+      return;
+    }
+
+    function runCountUp() {
+      els.forEach(function (el, idx) {
+        var finalText = getMetricFinalText(el);
+        var parsed = parseLargestNumber(finalText);
+        if (!parsed || parsed.target <= 0) {
+          el.textContent = finalText;
+          return;
+        }
+        var prefix = finalText.slice(0, parsed.index);
+        var suffix = finalText.slice(parsed.index + parsed.length);
+        var counter = { v: 0 };
+        el.textContent = prefix + '0' + suffix;
+        var tw = window.gsap.to(counter, {
+          v: parsed.target,
+          duration: 1.05,
+          delay: idx * 0.08,
+          ease: 'power3.out',
+          onUpdate: function () {
+            el.textContent = prefix + formatCount(counter.v) + suffix;
+          },
+          onComplete: function () {
+            el.textContent = finalText;
+          }
+        });
+        metricTweens.push(tw);
       });
     }
 
-    if (document.documentElement.getAttribute('data-motion') === 'reduced' || !window.gsap || !window.ScrollTrigger) {
-      finishImmediately();
-      return;
+    if (window.ScrollTrigger) {
+      var st = window.ScrollTrigger.create({
+        trigger: grid,
+        start: 'top 95%',
+        once: true,
+        onEnter: runCountUp
+      });
+      metricTriggers.push(st);
+      window.ScrollTrigger.refresh();
+    } else {
+      runCountUp();
     }
-
-    if (impactAnimated) {
-      syncImpactFormatting();
-      return;
-    }
-
-    window.ScrollTrigger.create({
-      trigger: ribbon,
-      start: 'top 92%',
-      once: true,
-      onEnter: function () {
-        impactAnimated = true;
-        els.forEach(function (el, idx) {
-          var target = Number(el.getAttribute('data-count-target')) || 0;
-          if (target === 0) {
-            el.textContent = '0';
-            return;
-          }
-          var counter = { v: 0 };
-          window.gsap.to(counter, {
-            v: target,
-            duration: 1.15,
-            delay: idx * 0.08,
-            ease: 'power3.out',
-            onUpdate: function () {
-              el.textContent = formatCount(counter.v);
-            }
-          });
-        });
-      }
-    });
   }
 
   /* ================= 3. INTERACTIVE LIVE ARCHITECTURE DIAGRAMS ================= */
@@ -455,6 +489,14 @@
     var modal = document.getElementById('qrModal');
     if (!modal) return;
 
+    var navQrBtn = document.getElementById('qrNavbarBtn');
+    if (navQrBtn) {
+      navQrBtn.addEventListener('click', function () {
+        var curView = window.RO_APP.router && window.RO_APP.router.getCurrentView();
+        openQrModal(curView === 'spora' ? 'spora' : 'portfolio');
+      });
+    }
+
     var closeBtn = document.getElementById('qrCloseBtn');
     if (closeBtn) closeBtn.addEventListener('click', closeQrModal);
     modal.addEventListener('click', function (ev) {
@@ -564,7 +606,7 @@
   }
 
   function refreshWidgets() {
-    syncImpactFormatting();
+    clearCaseMetricAnims();
     renderLiveArchitectures();
     renderSporaComparator();
     buildPrintDossier();
@@ -578,12 +620,14 @@
     if (widgetsInitialized) return;
     widgetsInitialized = true;
     runBootCurtain(false);
-    initImpactCounters();
     renderLiveArchitectures();
     renderSporaComparator();
     initQrModal();
     initPrintButtons();
     buildPrintDossier();
+    if (window.RO_APP.router) {
+      animateCaseMetrics(window.RO_APP.router.getCurrentView());
+    }
   }
 
   /* Self-boot safeguard in case a cached app.js ever omits widgets.init() */
@@ -596,6 +640,7 @@
   window.RO_APP.widgets = {
     init: initWidgets,
     refresh: refreshWidgets,
+    onViewEnter: animateCaseMetrics,
     replayCurtain: function () { runBootCurtain(true); },
     openQr: openQrModal,
     closeQr: closeQrModal,
