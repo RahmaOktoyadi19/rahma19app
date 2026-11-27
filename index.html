@@ -467,7 +467,7 @@
     </div>
 
     <!-- ================================================================
-         VIEW 2: SPORA — FEATURED INTERNSHIP CASE STUDY
+         VIEW 2: SPORA v1.9 — FLAGSHIP INTERNSHIP PWA CASE STUDY
          ================================================================ -->
     <div id="sporaView" class="page-view case-spora" aria-hidden="true">
       <div class="container">
@@ -475,11 +475,13 @@
           <a href="#/" class="btn btn-secondary btn-sm" data-i18n="case.backHome">← Kembali ke Beranda</a>
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
             <a href="#internship" class="btn btn-ghost btn-sm" data-i18n="case.backJourney">← Lihat di Timeline Magang</a>
-            <a href="https://github.com/RahmaOktoyadi19" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">GitHub Profile ↗</a>
+            <a href="#spora-gallery" class="btn btn-secondary btn-sm" data-i18n="spora.jumpGallery">Galeri Screenshot (24)</a>
+            <a href="https://forum.sp-link.id/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" data-i18n="spora.openApp">Buka Aplikasi SPORA (PWA) ↗</a>
           </div>
         </div>
       </div>
 
+      <!-- SPORA Hero + Live PWA CTA + Tutorial Mode Tip + Interactive Light/Dark Slider + 4 Audit Metrics -->
       <section class="case-section" style="padding-top:16px;">
         <div class="container">
           <div class="case-hero-card">
@@ -489,30 +491,105 @@
               </div>
               <div>
                 <div class="case-tags">
-                  <span class="chip chip-spora chip-mono">CASE 01 • INTERNSHIP PROJECT</span>
-                  <span class="chip chip-mono">Laravel (PHP)</span>
-                  <span class="chip chip-amber chip-mono">PT Semen Padang • Week 02–04</span>
+                  <span class="chip chip-spora chip-mono">v1.9 • SporaApp19</span>
+                  <span class="chip chip-success chip-mono">PWA • spora-pwa-v7</span>
+                  <span class="chip chip-amber chip-mono">PT Semen Padang • Indarung II–VI</span>
+                  <span class="chip chip-mono">Laravel 13 • Alpine.js • Leaflet GIS</span>
                 </div>
                 <h1 class="case-title">SPORA</h1>
                 <p class="case-subtitle" id="sporaOverviewText"></p>
+              </div>
+            </div>
+
+            <!-- Live Web / PWA Action Bar -->
+            <div class="download-bar">
+              <a href="https://forum.sp-link.id/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <span data-i18n="spora.openApp">Buka Aplikasi SPORA (PWA) ↗</span>
+                <span class="dl-size">forum.sp-link.id</span>
+              </a>
+              <a href="#spora-pwa" class="btn btn-secondary btn-sm" data-i18n="spora.jumpPwa">Panduan Instal PWA ↓</a>
+              <a href="#spora-gallery" class="btn btn-secondary btn-sm" data-i18n="spora.jumpGallery">Galeri Screenshot (24)</a>
+              <span class="chip chip-mono" data-i18n="pindai.repoPrivateNote">Repositori kode sumber bersifat privat / tersedia atas permintaan</span>
+            </div>
+
+            <!-- Prominent Tutorial Mode Callout for Visitors -->
+            <div class="tutorial-callout">
+              <div class="tutorial-callout-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              </div>
+              <div>
+                <strong data-i18n="spora.tutorialTipTitle">Tips untuk Teman-Teman yang Ingin Mencoba Aplikasi SPORA:</strong>
+                <p data-i18n="spora.tutorialTipDesc">Setelah membuka forum.sp-link.id, silakan klik menu "Masuk ke Mode Tutorial &amp; Simulasi" saja ya — Anda dapat bebas mencoba seluruh fitur secara interaktif tanpa akun dan tanpa mengubah data server pabrik.</p>
+              </div>
+            </div>
+
+            <!-- Interactive Light vs Dark Mode Comparison Showcase (SPORA Real Screenshots) -->
+            <div class="compare-wrap">
+              <div class="compare-head">
+                <strong style="font-size:0.88rem;" data-i18n="spora.compareTitle">Pratinjau Interaktif Mode Terang vs Mode Gelap SPORA (Screenshot Asli)</strong>
+                <div class="compare-btns">
+                  <button type="button" class="btn btn-secondary btn-sm" id="sporaCompareLightBtn" data-i18n="pindai.lightBtn">Mode Terang</button>
+                  <button type="button" class="btn btn-secondary btn-sm" id="sporaCompareSplitBtn">50 / 50</button>
+                  <button type="button" class="btn btn-secondary btn-sm" id="sporaCompareDarkBtn" data-i18n="pindai.darkBtn">Mode Gelap</button>
+                  <button type="button" class="btn btn-primary btn-sm" id="sporaCompareSweepBtn" data-i18n="pindai.autoSweep">Demo Otomatis</button>
+                </div>
+              </div>
+
+              <div class="compare-stage ratio-spora" id="sporaCompareStage">
+                <span class="compare-label left" data-i18n="pindai.lightLabel">Mode Terang</span>
+                <span class="compare-label right" data-i18n="pindai.darkLabel">Mode Gelap</span>
+                <picture id="sporaCompareLightPic"></picture>
+                <div class="compare-dark-layer" id="sporaCompareDarkLayer">
+                  <picture id="sporaCompareDarkPic"></picture>
+                </div>
+                <div class="compare-divider" id="sporaCompareDivider" aria-hidden="true"></div>
+                <div class="compare-knob" id="sporaCompareKnob" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>
+                </div>
+                <input type="range" min="0" max="100" value="50" class="compare-range" id="sporaCompareRange" data-i18n-aria="aria.sporaCompareSlider" aria-label="Geser perbandingan Mode Terang dan Mode Gelap SPORA" />
+              </div>
+            </div>
+
+            <!-- 4 Verified Audit Metrics (100% Bilingual) -->
+            <div class="metrics-grid">
+              <div class="metric-card">
+                <strong data-i18n="spora.m1Val">5.406 Alat</strong>
+                <span data-i18n="spora.m1Desc">Master Data Nomenklatur Indarung II–VI &amp; Tambang</span>
+              </div>
+              <div class="metric-card">
+                <strong data-i18n="spora.m2Val">99 / 99 Lulus</strong>
+                <span data-i18n="spora.m2Desc">Tes PHPUnit (592 assertions) + 7/7 tes unit JS</span>
+              </div>
+              <div class="metric-card">
+                <strong data-i18n="spora.m3Val">41 Modul / 27 Migrasi</strong>
+                <span data-i18n="spora.m3Desc">Laravel 13 + 19 Blade (8.173) &amp; 7 JS (10.174 baris)</span>
+              </div>
+              <div class="metric-card">
+                <strong data-i18n="spora.m4Val">24 / 24 Layar</strong>
+                <span data-i18n="spora.m4Desc">Audit Playwright E2E bersih (0 JS error, 0 401/404)</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
+      <!-- Story Cards -->
       <section class="case-section" style="padding-top:6px;">
         <div class="container">
+          <div class="section-header" data-reveal>
+            <div class="kicker" style="color:var(--proj-spora);"><span class="kicker-num">01</span><span data-i18n="spora.storyKicker">LATAR BELAKANG &amp; SOLUSI</span></div>
+            <h2 class="display-h2" data-i18n="spora.storyTitle">Membedah Permasalahan Pabrik Menjadi Sistem Kolaborasi Terpadu</h2>
+          </div>
           <div class="case-grid-2" id="sporaCardsGrid"></div>
         </div>
       </section>
 
-      <!-- Interactive Evolution Loop: WhatsApp -> Laravel -> Monday Demo -> Revisions -->
+      <!-- Interactive Internship Evolution Loop -->
       <section class="case-section" style="padding-top:6px;">
         <div class="container">
           <div class="section-header">
             <div class="kicker" style="color:var(--proj-spora);"><span class="kicker-num">DEV LOOP</span><span data-i18n="spora.evoKicker">EVOLUSI PENGEMBANGAN &amp; SIKLUS REVISI MENTOR</span></div>
-            <h2 class="display-h2" data-i18n="spora.evoTitle">Dari Diskusi WhatsApp hingga Presentasi &amp; Revisi Terarah</h2>
+            <h2 class="display-h2" data-i18n="spora.evoTitle">Dari Diskusi WhatsApp hingga Presentasi &amp; Rilis Audit v1.9</h2>
           </div>
 
           <div class="evolution-tabs" id="sporaEvoTabs" role="tablist" aria-label="Tahap Pengembangan SPORA"></div>
@@ -520,14 +597,100 @@
         </div>
       </section>
 
-      <!-- Honest Documentation Readiness Slot -->
+      <!-- 10 Verified Capabilities -->
       <section class="case-section" style="padding-top:6px;">
         <div class="container">
-          <div class="dossier-notice">
-            <div class="dossier-notice-icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <div class="section-header" data-reveal>
+            <div class="kicker" style="color:var(--proj-spora);"><span class="kicker-num">02</span><span data-i18n="spora.featKicker">KEMAMPUAN UTAMA v1.9</span></div>
+            <h2 class="display-h2" data-i18n="spora.featTitle">10 Kapabilitas Terdokumentasi SPORA v1.9</h2>
+            <p class="lead-text" data-i18n="spora.featDesc">Seluruh fitur terverifikasi dari dokumen audit teknis &amp; uji coba fungsional SPORA v1.9.</p>
+          </div>
+          <div class="case-grid-2" id="sporaFeaturesGrid"></div>
+        </div>
+      </section>
+
+      <!-- 24 Authentic Screenshots Gallery + 7 Category Filters + Universal Lightbox -->
+      <section class="case-section" id="spora-gallery">
+        <div class="container">
+          <div class="section-header" data-reveal>
+            <div class="kicker" style="color:var(--proj-spora);"><span class="kicker-num">03</span><span data-i18n="spora.galKicker">GALERI 24 SCREENSHOT ASLI</span></div>
+            <h2 class="display-h2" data-i18n="spora.galTitle">24 Tangkapan Layar Nyata SPORA (Desktop HD &amp; Mobile PWA)</h2>
+            <p class="lead-text" data-i18n="spora.galDesc">Saring berdasarkan 7 kategori alur kerja lalu klik gambar mana pun untuk membuka Lightbox layar penuh (Zoom, Swipe, ←, →, Esc).</p>
+          </div>
+          <div class="gallery-filters" id="sporaGalleryFilters" role="tablist" aria-label="Filter Kategori Screenshot SPORA"></div>
+          <div class="gallery-grid" id="sporaGalleryGrid"></div>
+        </div>
+      </section>
+
+      <!-- Dedicated Mobile PWA Showcase & 3-Platform Install Guide -->
+      <section class="case-section" id="spora-pwa">
+        <div class="container">
+          <div class="section-header" data-reveal>
+            <div class="kicker" style="color:var(--proj-spora);"><span class="kicker-num">04</span><span data-i18n="spora.pwaKicker">MOBILE PWA &amp; INSTALASI</span></div>
+            <h2 class="display-h2" data-i18n="spora.pwaTitle">Akses &amp; Instalasi SPORA Sebagai Aplikasi (PWA spora-pwa-v7)</h2>
+            <p class="lead-text" data-i18n="spora.pwaDesc">Dapat dipasang langsung ke layar utama Android, iPhone, maupun Desktop untuk tampilan layar penuh tanpa bilah alamat browser.</p>
+          </div>
+
+          <div class="pwa-showcase-grid">
+            <div class="pwa-guide-card" data-reveal>
+              <div style="display:grid;gap:16px;">
+                <div class="pwa-tabs" id="sporaPwaTabs" role="tablist" aria-label="Platform Instalasi PWA"></div>
+                <ol class="pwa-step-list" id="sporaPwaSteps"></ol>
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:10px;padding-top:14px;border-top:1px solid var(--border-hairline);">
+                <a href="https://forum.sp-link.id/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" data-i18n="spora.openApp">Buka Aplikasi SPORA (PWA) ↗</a>
+                <span class="chip chip-amber chip-mono" data-i18n="spora.pwaBadge">Klik Mode Tutorial untuk Mencoba Aman</span>
+              </div>
             </div>
-            <div id="sporaNoticeText"></div>
+
+            <div class="pwa-phone-stage" id="sporaPwaPhones" data-reveal></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Architecture & Core Stack -->
+      <section class="case-section">
+        <div class="container">
+          <div class="section-header" data-reveal>
+            <div class="kicker" style="color:var(--proj-spora);"><span class="kicker-num">05</span><span data-i18n="spora.archKicker">ARSITEKTUR &amp; STACK TEKNOLOGI</span></div>
+            <h2 class="display-h2" data-i18n="spora.archTitle">Alur End-to-End &amp; Inventaris Teknologi SPORA v1.9</h2>
+            <p class="lead-text" data-i18n="spora.archDesc">Integrasi rapi antara Laravel 13, Alpine.js SPA, Tailwind v4, real-time Echo/Pusher, Leaflet GIS, kompresi media ganda, &amp; PWA.</p>
+          </div>
+
+          <div class="arch-flow" id="sporaArchFlow"></div>
+
+          <div class="table-wrap" data-reveal>
+            <table class="spec-table">
+              <thead>
+                <tr>
+                  <th data-i18n="spora.thPkg">Teknologi / Modul</th>
+                  <th data-i18n="spora.thVer">Versi / Skala</th>
+                  <th data-i18n="spora.thRole">Peran di SPORA v1.9</th>
+                </tr>
+              </thead>
+              <tbody id="sporaTechStackBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Security Audit & System Limits -->
+      <section class="case-section" style="padding-top:6px;">
+        <div class="container">
+          <div class="section-header" data-reveal>
+            <div class="kicker" style="color:var(--proj-spora);"><span class="kicker-num">06</span><span data-i18n="spora.secKicker">AUDIT KEAMANAN &amp; KAPASITAS SISTEM</span></div>
+            <h2 class="display-h2" data-i18n="spora.secTitle">Standar Keamanan Produksi &amp; Batas Teknis SPORA v1.9</h2>
+          </div>
+
+          <div class="case-grid-2">
+            <div class="case-card" data-reveal>
+              <h3 data-i18n="spora.secCardTitle">7 Lapisan Verifikasi Keamanan &amp; Privasi</h3>
+              <ul class="check-list" id="sporaSecurityList"></ul>
+            </div>
+            <div class="case-card" data-reveal>
+              <h3 data-i18n="spora.limCardTitle">Spesifikasi Batas Teknis &amp; Kapasitas Operasi</h3>
+              <ul class="check-list" id="sporaLimitsList"></ul>
+            </div>
           </div>
 
           <div class="case-next-bar">
@@ -903,6 +1066,7 @@
   <!-- Modular Portfolio Data -->
   <script defer src="./data/i18n.js"></script>
   <script defer src="./data/internship.js"></script>
+  <script defer src="./data/spora-data.js"></script>
   <script defer src="./data/projects.js"></script>
 
   <!-- Modular Application Engines -->

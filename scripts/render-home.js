@@ -93,6 +93,20 @@
   }
 
   function buildProjectVisual(p, lang) {
+    if (p.visualType === 'spora-preview') {
+      return (
+        '<div class="proj-visual-stage">' +
+          '<div class="proj-window-bar">' +
+            '<span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span>' +
+            '<span>SPORA v1.9 • forum.sp-link.id (PWA)</span>' +
+          '</div>' +
+          '<div class="proj-visual-body">' +
+            '<img src="' + p.previewWebp + '" alt="SPORA v1.9 Dark Mode Dashboard" width="1600" height="1007" loading="lazy" decoding="async" class="shot-preview" />' +
+          '</div>' +
+        '</div>'
+      );
+    }
+
     if (p.visualType === 'pindai-preview') {
       return (
         '<div class="proj-visual-stage">' +
@@ -202,6 +216,10 @@
         ? '<a href="' + p.extraLink.url + '" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">' + t(p.extraLink.labelKey) + ' ↗</a>'
         : '';
 
+      var tutorialNote = p.tutorialHint
+        ? '<div class="proj-tutorial-tip"><strong>💡</strong> ' + p.tutorialHint[lang] + '</div>'
+        : '';
+
       return (
         '<article class="project-showcase-card glow-card ' + p.cardClass + '" style="--stack-i:' + stackIdx + ';" data-proj-id="' + p.id + '" data-stack-idx="' + stackIdx + '" data-reveal>' +
           '<div>' +
@@ -217,6 +235,7 @@
             '</div>' +
             '<p class="proj-subtitle">' + p.subtitle[lang] + '</p>' +
             '<ul class="proj-highlights">' + highlights + '</ul>' +
+            tutorialNote +
             '<div class="proj-tags">' + tags + '</div>' +
             '<div class="proj-cta-row">' +
               '<a href="' + p.route + '" class="btn btn-primary btn-sm">' + t('projects.openCase') + ' →</a>' +

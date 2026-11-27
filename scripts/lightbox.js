@@ -1,5 +1,6 @@
 /* ==========================================================================
-   FULLSCREEN LIGHTBOX — ZOOM, KEYBOARD, SWIPE, FOCUS TRAP & FOCUS RESTORE
+   UNIVERSAL FULLSCREEN LIGHTBOX — SUPPORTS SPORA (24 SHOTS) & PINDAI (9 SHOTS)
+   Zoom, Keyboard (←, →, +, -, Esc), Touch Swipe, Focus Trap & Focus Restore
    ========================================================================== */
 
 (function () {
@@ -7,12 +8,24 @@
 
   window.RO_APP = window.RO_APP || {};
 
+  var activeGalleryKey = 'pindai';
   var lbIndex = 0;
   var lbZoom = 1;
   var triggerEl = null;
 
   function getShots() {
+    if (activeGalleryKey === 'spora' && window.PORTFOLIO_DATA.spora && window.PORTFOLIO_DATA.spora.screenshots) {
+      return window.PORTFOLIO_DATA.spora.screenshots;
+    }
     return window.PORTFOLIO_DATA.pindai.screenshots;
+  }
+
+  function getPrimarySrc(shot) {
+    return shot.webp || shot.src;
+  }
+
+  function getFallbackSrc(shot) {
+    return shot.src || shot.webp;
   }
 
   function applyZoom() {
@@ -29,9 +42,12 @@
     if (!thumbsEl) return;
 
     thumbsEl.innerHTML = shots.map(function (s, i) {
+      var primary = getPrimarySrc(s);
+      var fallback = getFallbackSrc(s);
+      var onErr = primary !== fallback ? ' onerror="this.onerror=null;this.src=\'' + fallback + '\';"' : '';
       return (
         '<button type="button" class="lb-thumb' + (i === lbIndex ? ' active' : '') + '" data-idx="' + i + '" aria-label="' + s.title[lang] + '">' +
-          '<img src="' + s.webp + '" onerror="this.onerror=null;this.src=\'' + s.src + '\';" alt="" width="66" height="40" />' +
+          '<img src="' + primary + '"' + onErr + ' alt="" width="66" height="40" loading="lazy" />' +
         '</button>'
       );
     }).join('');
@@ -43,6 +59,11 @@
         updateUI();
       });
     });
+
+    var activeThumb = thumbsEl.querySelector('.lb-thumb.active');
+    if (activeThumb && activeThumb.scrollIntoView) {
+      activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
   }
 
   function updateUI() {
@@ -57,11 +78,10 @@
     var desc = document.getElementById('lbDesc');
 
     if (img) {
-      img.onerror = function () {
-        img.onerror = null;
-        img.src = shot.src;
-      };
-      img.src = shot.webp;
+      var primary = getPrimarySrc(shot);
+      var fallback = getFallbackSrc(shot);
+      img.onerror = primary !== fallback ? function () { img.onerror = null; img.src = fallback; } : null;
+      img.src = primary;
       img.alt = shot.title[lang];
     }
     if (counter) counter.textContent = (lbIndex + 1) + ' / ' + shots.length;
@@ -71,9 +91,10 @@
     renderThumbs();
   }
 
-  function openLightbox(index, opener) {
+  function openLightbox(index, opener, galleryKey) {
     var lb = document.getElementById('lightbox');
     if (!lb) return;
+    activeGalleryKey = galleryKey === 'spora' ? 'spora' : 'pindai';
     var shots = getShots();
     triggerEl = opener || document.activeElement;
     lbIndex = (index + shots.length) % shots.length;
@@ -151,7 +172,6 @@
       }, { passive: true });
     }
 
-    /* Keyboard controls + Focus Trap */
     document.addEventListener('keydown', function (ev) {
       if (!lb.classList.contains('is-open')) return;
 

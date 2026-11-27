@@ -312,6 +312,184 @@
   user-select: none;
 }
 
+.compare-stage.ratio-spora {
+  aspect-ratio: 2049 / 1290;
+}
+
+/* Prominent Tutorial Callout for Live SPORA App Visitors */
+.tutorial-callout {
+  margin-top: 16px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(120deg, var(--accent-amber-soft), var(--proj-spora-soft));
+  border: 1px solid var(--accent-amber-border);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.tutorial-callout-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(245, 158, 11, 0.2);
+  color: var(--accent-amber);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.tutorial-callout strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.94rem;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.tutorial-callout p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.58;
+}
+
+.proj-tutorial-tip {
+  margin: -6px 0 16px;
+  padding: 10px 13px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-amber-soft);
+  border: 1px solid var(--accent-amber-border);
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Mobile Portrait Screenshot Container (Zero Cropping for 780x1688 PWA Shots) */
+.shot-card.is-mobile-shot .shot-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: radial-gradient(circle at 50% 40%, rgba(244, 63, 94, 0.14), #070b16);
+}
+
+.shot-card.is-mobile-shot .shot-thumb img {
+  width: auto;
+  height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+}
+
+/* Dedicated Mobile PWA Showcase & 3-Platform Install Guide */
+.pwa-showcase-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.pwa-guide-card {
+  padding: 26px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-hairline);
+  box-shadow: var(--specular-top), var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.pwa-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pwa-step-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.pwa-step-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.89rem;
+  color: var(--text-secondary);
+}
+
+.pwa-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--proj-spora-soft);
+  color: var(--proj-spora);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.pwa-phone-stage {
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: radial-gradient(420px circle at 50% 45%, rgba(244, 63, 94, 0.14), var(--bg-surface-1));
+  border: 1px solid var(--border-hairline);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: center;
+}
+
+.pwa-phone-btn {
+  padding: 8px;
+  border-radius: 22px;
+  background: #070b16;
+  border: 1.5px solid var(--border-strong);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: transform 0.28s var(--ease-expo), border-color 0.2s ease;
+}
+
+.pwa-phone-btn:hover {
+  transform: translateY(-4px);
+  border-color: var(--proj-spora);
+}
+
+.pwa-phone-btn img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  display: block;
+}
+
+@media (max-width: 960px) {
+  .pwa-showcase-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .pwa-phone-stage {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
 .compare-stage picture,
 .compare-stage img {
   position: absolute;

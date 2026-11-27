@@ -61,11 +61,19 @@
       },
       {
         group: l === 'en' ? 'Case Studies' : 'Studi Kasus Proyek',
-        title: 'SPORA — PT Semen Padang Plant Discussion Forum',
-        sub: l === 'en' ? 'Laravel app built from scratch in Weeks 02–04' : 'Forum diskusi pabrik Laravel dibangun dari nol di Week 02–04',
+        title: 'SPORA v1.9 — PT Semen Padang Industrial PWA',
+        sub: l === 'en' ? 'Laravel 13, 5,406 Assets, Satellite GIS, 24 Screenshots & 99/99 Tests' : 'Laravel 13, 5.406 Alat, Peta Satelit GIS, 24 Screenshot & 99/99 Tes',
         tag: 'CASE 01',
-        keywords: 'spora laravel forum pabrik whatsapp mentor',
+        keywords: 'spora laravel forum pabrik whatsapp mentor pwa gis 5406 peta satelit',
         action: function () { window.RO_APP.router.go('#/projects/spora'); }
+      },
+      {
+        group: l === 'en' ? 'Quick Actions' : 'Aksi Cepat',
+        title: l === 'en' ? 'Try SPORA v1.9 Live (Click Tutorial Mode)' : 'Coba Aplikasi SPORA v1.9 Live (Klik Mode Tutorial)',
+        sub: 'https://forum.sp-link.id/',
+        tag: 'LIVE PWA ↗',
+        keywords: 'spora live demo tutorial coba aplikasi forum.sp-link.id pwa',
+        action: function () { window.open('https://forum.sp-link.id/', '_blank', 'noopener,noreferrer'); }
       },
       {
         group: l === 'en' ? 'Case Studies' : 'Studi Kasus Proyek',
@@ -253,7 +261,7 @@
         '<div class="brief-box" style="margin-bottom:16px;">' +
           '<h4>3 Featured Projects</h4>' +
           '<ul>' +
-            '<li><strong>SPORA (Laravel):</strong> Plant forum solving fragmented WhatsApp discussions — built &amp; presented during internship.</li>' +
+            '<li><strong>SPORA v1.9 (Laravel 13 PWA):</strong> Live industrial forum at <code>forum.sp-link.id</code> (5,406 plant assets, Satellite GIS, 99/99 PHPUnit tests, 24 real screenshots — click Tutorial Mode to try safely!).</li>' +
             '<li><strong>Pindai v1.1.1 (Flutter):</strong> Cross-platform Hybrid OCR app (18,835 Dart lines, 75/75 tests passing, 0 analyze issues, live Windows .exe &amp; Android .apk installers).</li>' +
             '<li><strong>Detector APD:</strong> Industrial PPE (K3) safety initiative — case study dossier structured for verified technical specs.</li>' +
           '</ul>' +
@@ -287,7 +295,7 @@
         '<div class="brief-box" style="margin-bottom:16px;">' +
           '<h4>3 Proyek Utama</h4>' +
           '<ul>' +
-            '<li><strong>SPORA (Laravel):</strong> Forum diskusi pabrik untuk menggantikan penyebaran info di WhatsApp — dibangun &amp; dipresentasikan saat magang.</li>' +
+            '<li><strong>SPORA v1.9 (Laravel 13 PWA):</strong> Forum industri live di <code>forum.sp-link.id</code> (5.406 alat pabrik, Peta Satelit GIS, 99/99 tes PHPUnit lulus, 24 screenshot asli — klik Mode Tutorial untuk mencoba aman!).</li>' +
             '<li><strong>Pindai v1.1.1 (Flutter):</strong> Aplikasi OCR Hybrid lintas platform (18.835 baris Dart, 75/75 tes lulus, 0 isu analyze, installer Windows .exe &amp; Android .apk siap unduh).</li>' +
             '<li><strong>Detector APD:</strong> Inisiatif keselamatan kerja industri (K3) — halaman dossier disiapkan untuk spesifikasi teknis terverifikasi.</li>' +
           '</ul>' +

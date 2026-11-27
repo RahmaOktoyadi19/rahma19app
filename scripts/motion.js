@@ -638,7 +638,7 @@
     }
 
     /* Batch-staggered 3D reveal for feature cards, screenshot cards, architecture steps & tables */
-    var batchTargets = viewEl.querySelectorAll('.case-card, .shot-card, .arch-step, .table-wrap, .evo-stage, .dossier-notice');
+    var batchTargets = viewEl.querySelectorAll('.case-card, .shot-card, .arch-step, .table-wrap, .evo-stage, .dossier-notice, .pwa-guide-card, .pwa-phone-stage');
     if (batchTargets.length) {
       gsap.set(batchTargets, { y: 42, opacity: 0, scale: 0.95, rotateX: 6, transformPerspective: 1000 });
       var batchTr = ScrollTrigger.batch(batchTargets, {
@@ -768,8 +768,16 @@
       else window.scrollTo({ top: 0, behavior: 'instant' });
     },
     scrollTo: function (el) {
-      if (lenis) lenis.scrollTo(el, { offset: -74 });
-      else el.scrollIntoView({ behavior: 'smooth' });
+      if (lenis) {
+        lenis.scrollTo(el, {
+          offset: -74,
+          onComplete: function () {
+            if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+          }
+        });
+      } else {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 })();

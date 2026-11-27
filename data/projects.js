@@ -15,27 +15,36 @@ window.PORTFOLIO_DATA.featuredProjects = [
     logoClass: 'spora',
     logo: './assets/logos/spora-logo.png',
     logoAlt: { id: 'Logo resmi SPORA', en: 'Official SPORA logo' },
-    name: 'SPORA',
-    badge: { id: 'PROYEK MAGANG PT SEMEN PADANG', en: 'PT SEMEN PADANG INTERNSHIP' },
+    name: 'SPORA v1.9',
+    badge: { id: 'PROYEK MAGANG PT SEMEN PADANG • PWA LIVE', en: 'PT SEMEN PADANG INTERNSHIP • LIVE PWA' },
     badgeClass: 'chip-spora',
     subtitle: {
-      id: 'Aplikasi web forum diskusi internal berbasis Laravel yang dirancang untuk menggantikan fragmentasi diskusi pabrik di WhatsApp, mempercepat penyampaian informasi, dan memusatkan penyelesaian masalah operasional.',
-      en: 'Internal plant discussion forum built with Laravel to replace fragmented WhatsApp factory discussions, accelerate information sharing, and centralize operational problem solving.'
+      id: 'Progressive Web App (PWA) forum diskusi & pelaporan operasional industri PT Semen Padang berbasis Laravel 13 — memadukan chat real-time + lampiran SOP, peringatan darurat, arsip solusi Sebelum & Sesudah, serta Master Data 5.406 Alat dengan Peta Satelit GIS & Statistik 12 Bulan.',
+      en: 'Laravel 13 Industrial Progressive Web App (PWA) for PT Semen Padang — combining real-time chat + SOP attachments, emergency alerts, Before & After repair archives, and 5,406 Plant Equipment Nomenclatures with Satellite GIS & 12-Month Analytics.'
     },
     highlights: {
       id: [
-        'Dibangun dari nol pada Minggu 02–03 periode magang di PT Semen Padang.',
-        'Dipresentasikan perdana di hadapan mentor pada Senin Minggu 04 dengan apresiasi positif.',
-        'Menjalani siklus revisi & penyempurnaan terarah berdasarkan masukan langsung mentor.'
+        '5.406 Nomenklatur Alat lintas Indarung II–VI & Tambang + Peta Satelit GIS interaktif & grafik 12 bulan.',
+        '99/99 tes PHPUnit lulus (592 assertions), 7/7 tes JS lulus, & 24 tangkapan layar asli (Desktop + Mobile PWA).',
+        'Live Web/PWA aktif di forum.sp-link.id — dilengkapi Mode Tutorial & Simulasi 5 Langkah yang aman dicoba tanpa akun.'
       ],
       en: [
-        'Built from scratch during Weeks 02–03 of my internship at PT Semen Padang.',
-        'Presented to my mentor on Monday of Week 04, earning positive appreciation.',
-        'Iteratively refined through a structured mentor feedback and revision loop.'
+        '5,406 Equipment Nomenclatures across Indarung II–VI & Mining + interactive Satellite GIS & 12-month charts.',
+        '99/99 PHPUnit tests passing (592 assertions), 7/7 JS tests passing, & 24 authentic screenshots (Desktop + Mobile PWA).',
+        'Live Web/PWA at forum.sp-link.id — includes a safe 5-Step Tutorial & Simulation Mode requiring zero account.'
       ]
     },
-    tags: ['Laravel', 'PHP', 'Plant Forum', 'PT Semen Padang'],
-    visualType: 'spora-blueprint'
+    tutorialHint: {
+      id: 'Ingin mencoba aplikasinya? Buka forum.sp-link.id lalu klik menu Mode Tutorial & Simulasi saja agar aman tanpa akun.',
+      en: 'Want to try the live app? Open forum.sp-link.id and simply click Tutorial & Simulation Mode to explore safely without an account.'
+    },
+    tags: ['Laravel 13', 'Alpine.js', 'Tailwind v4', 'Leaflet GIS', 'PWA'],
+    visualType: 'spora-preview',
+    previewWebp: './assets/projects/spora/05_beranda_jelajah_gelap.webp',
+    extraLink: {
+      url: 'https://forum.sp-link.id/',
+      labelKey: 'projects.trySpora'
+    }
   },
   {
     id: 'pindai',
@@ -105,115 +114,7 @@ window.PORTFOLIO_DATA.featuredProjects = [
   }
 ];
 
-/* ================= CASE STUDY 01: SPORA (100% FACTUAL) ================= */
-window.PORTFOLIO_DATA.spora = {
-  overview: {
-    id: 'SPORA adalah aplikasi forum diskusi internal berbasis web yang saya rancang dan bangun dari nol menggunakan Laravel selama bulan pertama magang di PT Semen Padang (Minggu 02–04).',
-    en: 'SPORA is an internal web discussion forum application designed and built from scratch with Laravel during the first month of my internship at PT Semen Padang (Weeks 02–04).'
-  },
-  cards: [
-    {
-      kicker: { id: '01 / LATAR BELAKANG', en: '01 / BACKGROUND' },
-      title: { id: 'Realitas Komunikasi di Lingkungan Pabrik', en: 'Communication Reality on the Plant Floor' },
-      body: {
-        id: 'Di lingkungan operasional pabrik, diskusi teknis dan penyampaian informasi harian sebelumnya masih banyak dilakukan melalui grup WhatsApp. Aliran pesan chat yang cepat membuat topik penting mudah tenggelam dan sulit ditelusuri kembali.',
-        en: 'In day-to-day plant operations, technical discussions and operational updates were largely conducted over WhatsApp. Fast-moving chat streams easily buried important topics and made historical troubleshooting difficult to trace.'
-      }
-    },
-    {
-      kicker: { id: '02 / PERNYATAAN MASALAH', en: '02 / PROBLEM STATEMENT' },
-      title: { id: 'Fragmentasi Informasi & Lambatnya Penelusuran Solusi', en: 'Fragmented Updates & Slower Problem Resolution' },
-      body: {
-        id: 'Ketika permasalahan di pabrik perlu dibahas lintas personel, obrolan berbasis pesan instan tidak menyediakan ruang topik yang terstruktur untuk mempercepat penyampaian informasi maupun mendokumentasikan penyelesaian masalah.',
-        en: 'When factory issues required collaborative discussion, unstructured instant messaging lacked dedicated topic threads to speed up information sharing and keep problem-solving discussions organized.'
-      }
-    },
-    {
-      kicker: { id: '03 / TUJUAN & SOLUSI', en: '03 / OBJECTIVES & SOLUTION' },
-      title: { id: 'Forum Diskusi Terstruktur Berbasis Laravel', en: 'Structured Laravel-Powered Discussion Forum' },
-      body: {
-        id: 'Membangun SPORA menggunakan framework Laravel sebagai platform khusus yang mempercepat penyampaian informasi sekaligus menyediakan ruang diskusi terarah guna membantu menyelesaikan permasalahan di lingkungan pabrik.',
-        en: 'Built SPORA with Laravel as a dedicated platform designed to speed up information delivery and provide a structured discussion space for resolving issues in the factory environment.'
-      }
-    },
-    {
-      kicker: { id: '04 / PERAN & PELAJARAN', en: '04 / MY ROLE & LESSONS LEARNED' },
-      title: { id: 'Full-Stack Developer Magang & Siklus Revisi Mentor', en: 'Intern Full-Stack Developer & Mentor Review Cycle' },
-      body: {
-        id: 'Saya menangani pembangunan aplikasi dari nol sejak Minggu 02–03, mempresentasikannya di hadapan mentor pada hari Senin Minggu 04, menerima apresiasi serta masukan konstruktif, dan mengerjakan revisi sembari menyeimbangkan tugas rekap absensi penggajian.',
-        en: 'I owned the build from scratch across Weeks 02–03, delivered the first presentation to my mentor on Monday of Week 04, received both appreciation and constructive revision notes, and executed refinements alongside payroll attendance duties.'
-      }
-    }
-  ],
-  evolutionStages: [
-    {
-      id: 'stage-1',
-      label: { id: '01. Masalah Awal', en: '01. Initial Pain Point' },
-      title: { id: 'Diskusi Pabrik Tersebar di WhatsApp', en: 'Plant Discussions Fragmented on WhatsApp' },
-      desc: {
-        id: 'Informasi dan diskusi penyelesaian kendala pabrik masih bertumpu pada pesan instan WhatsApp sehingga topik penting bercampur dan sulit diorganisasi.',
-        en: 'Factory information sharing and issue resolution relied heavily on WhatsApp chats, making critical updates hard to organize and track.'
-      },
-      telemetry: [
-        { k: 'CONTEXT', v: 'PT Semen Padang Plant Environment' },
-        { k: 'BOTTLENECK', v: 'Unstructured Chat-Based Info Flow' },
-        { k: 'TIMELINE', v: 'Identified in Week 02' }
-      ]
-    },
-    {
-      id: 'stage-2',
-      label: { id: '02. Pembangunan (Wk 03)', en: '02. From-Scratch Build (Wk 03)' },
-      title: { id: 'Fokus Membangun SPORA dengan Laravel', en: 'Focused Laravel Build From Scratch' },
-      desc: {
-        id: 'Sepanjang Minggu 03, fokus penuh diarahkan untuk membangun fondasi dan fungsionalitas aplikasi forum diskusi SPORA dari awal menggunakan Laravel.',
-        en: 'Throughout Week 03, dedicated engineering focus went into building the SPORA discussion forum application from scratch using Laravel.'
-      },
-      telemetry: [
-        { k: 'FRAMEWORK', v: 'Laravel (PHP Web Application)' },
-        { k: 'SCOPE', v: 'Plant Info Sharing & Issue Forum' },
-        { k: 'TIMELINE', v: 'Week 02–03 Sprint' }
-      ]
-    },
-    {
-      id: 'stage-3',
-      label: { id: '03. Presentasi Senin (Wk 04)', en: '03. Monday Presentation (Wk 04)' },
-      title: { id: 'Presentasi Perdana di Hadapan Mentor', en: 'First Stakeholder Demo to Mentor' },
-      desc: {
-        id: 'Hari Senin Minggu 04 menjadi tonggak presentasi perdana SPORA kepada mentor. Aplikasi mendapat apresiasi positif disertai catatan masukan dan revisi untuk peningkatan kualitas.',
-        en: 'On Monday of Week 04, SPORA was presented for the first time to my mentor — receiving positive appreciation along with constructive revision feedback.'
-      },
-      telemetry: [
-        { k: 'MILESTONE', v: 'First Live Presentation (Monday Wk 04)' },
-        { k: 'OUTCOME', v: 'Mentor Appreciation + Actionable Feedback' },
-        { k: 'SKILL', v: 'Technical Communication & Demo' }
-      ]
-    },
-    {
-      id: 'stage-4',
-      label: { id: '04. Revisi Paralel (Wk 04)', en: '04. Parallel Refinement (Wk 04)' },
-      title: { id: 'Penyempurnaan SPORA & Tanggung Jawab Paralel', en: 'SPORA Refinement Alongside Payroll Operations' },
-      desc: {
-        id: 'Menindaklanjuti masukan mentor untuk menyempurnakan SPORA sembari tetap menuntaskan tugas operasional rekap data absensi penggajian pada Selasa hingga Jumat.',
-        en: 'Implemented mentor-guided SPORA revisions while simultaneously delivering attendance recap verification for company payroll systems from Tuesday to Friday.'
-      },
-      telemetry: [
-        { k: 'MODE', v: 'Iterative Revision + Operational Support' },
-        { k: 'SCHEDULE', v: 'Tuesday – Friday (Week 04)' },
-        { k: 'STATUS', v: 'Continuously Refined' }
-      ]
-    }
-  ],
-  pendingNotice: {
-    title: {
-      id: 'Slot Dokumentasi Screenshot & Daftar Fitur Terverifikasi SPORA',
-      en: 'Prepared Slot for Verified SPORA Screenshots & Feature Breakdown'
-    },
-    desc: {
-      id: 'Demi menjaga akurasi 100% tanpa mengarang detail antarmuka internal, tangkapan layar aktual aplikasi SPORA, rincian modul fitur, serta tautan demo/repositori akan ditampilkan di bagian ini segera setelah dokumentasi visual aktual ditambahkan ke proyek.',
-      en: 'To maintain 100% factual accuracy without fabricating internal plant screens, authentic SPORA UI screenshots, verified module listings, and repository/demo links will appear here as soon as visual documentation is added.'
-    }
-  }
-};
+/* SPORA detailed dataset now lives in data/spora-data.js */
 
 /* ================= CASE STUDY 02: PINDAI v1.1.1 (100% VERIFIED AUDIT) ================= */
 window.PORTFOLIO_DATA.pindai = {
@@ -585,25 +486,37 @@ window.PORTFOLIO_DATA.techCategories = [
     id: 'languages',
     label: { id: 'Bahasa Pemrograman', en: 'Programming Languages' },
     items: [
-      { name: 'Dart', trace: { id: 'Pindai v1.1.1 (18.835 baris kode sumber + 3.080 baris tes)', en: 'Pindai v1.1.1 (18,835 Dart source lines + 3,080 test lines)' }, route: '#/projects/pindai' },
-      { name: 'PHP', trace: { id: 'SPORA — Aplikasi forum diskusi pabrik berbasis Laravel', en: 'SPORA — Laravel plant discussion forum web app' }, route: '#/projects/spora' },
-      { name: 'JavaScript', trace: { id: 'Arsitektur interaktif, router, i18n & Lightbox portfolio ini', en: 'Interactive architecture, router, i18n & Lightbox of this portfolio' }, route: '#/' },
-      { name: 'HTML5 & CSS3', trace: { id: 'Semantic HTML, Design System Obsidian Forge & responsif 320–1920px', en: 'Semantic HTML, Obsidian Forge Design System & 320–1920px responsiveness' }, route: '#/' }
+      { name: 'PHP 8.3', trace: { id: 'SPORA v1.9 — Backend Laravel 13 (41 modul inti & 27 migrasi)', en: 'SPORA v1.9 — Laravel 13 backend (41 core modules & 27 migrations)' }, route: '#/projects/spora' },
+      { name: 'Dart', trace: { id: 'Pindai v1.1.1 — 18.835 baris kode sumber + 3.080 baris tes', en: 'Pindai v1.1.1 — 18,835 Dart source lines + 3,080 test lines' }, route: '#/projects/pindai' },
+      { name: 'JavaScript', trace: { id: 'SPORA v1.9 (10.174 baris JS / Alpine.js / Leaflet) & Portfolio ini', en: 'SPORA v1.9 (10,174 JS lines / Alpine.js / Leaflet) & this portfolio' }, route: '#/projects/spora' },
+      { name: 'HTML5 & CSS3', trace: { id: 'SPORA Blade Views (8.173 baris) & Design System Obsidian Forge', en: 'SPORA Blade Views (8,173 lines) & Obsidian Forge Design System' }, route: '#/' }
+    ]
+  },
+  {
+    id: 'frontend',
+    label: { id: 'Frontend & GIS', en: 'Frontend & GIS' },
+    items: [
+      { name: 'Alpine.js', trace: { id: 'SPORA v1.9 — Reaktivitas SPA ringan (v3.16.3) tanpa reload penuh', en: 'SPORA v1.9 — Lightweight SPA reactivity (v3.16.3) without full reloads' }, route: '#/projects/spora' },
+      { name: 'Tailwind CSS v4', trace: { id: 'SPORA v1.9 — Antarmuka adaptif Mode Gelap/Terang & Mobile PWA', en: 'SPORA v1.9 — Responsive Dark/Light UI & Mobile PWA styling' }, route: '#/projects/spora' },
+      { name: 'Leaflet GIS', trace: { id: 'SPORA v1.9 — Peta satelit Esri Imagery & marker radar 5.406 alat', en: 'SPORA v1.9 — Esri Imagery satellite map & 5,406 asset radar pins' }, route: '#/projects/spora' },
+      { name: 'Vite 8', trace: { id: 'SPORA v1.9 — Production bundler cepat dengan asset manifest hashing', en: 'SPORA v1.9 — Fast production bundling with hashed asset manifests' }, route: '#/projects/spora' }
     ]
   },
   {
     id: 'backend',
-    label: { id: 'Backend & Web', en: 'Backend & Web' },
+    label: { id: 'Backend & Real-Time', en: 'Backend & Real-Time' },
     items: [
-      { name: 'Laravel', trace: { id: 'SPORA — Dibangun dari nol pada Week 02–03 Magang PT Semen Padang', en: 'SPORA — Built from scratch during Weeks 02–03 at PT Semen Padang' }, route: '#/projects/spora' },
+      { name: 'Laravel 13', trace: { id: 'SPORA v1.9 — Forum industri, 5.406 alat, keamanan CSP & 99/99 tes', en: 'SPORA v1.9 — Industrial forum, 5,406 assets, CSP security & 99/99 tests' }, route: '#/projects/spora' },
+      { name: 'Laravel Echo & Pusher', trace: { id: 'SPORA v1.9 — Ruang diskusi real-time & siaran peringatan darurat', en: 'SPORA v1.9 — Real-time chat rooms & emergency incident broadcasts' }, route: '#/projects/spora' },
       { name: 'REST API Integration', trace: { id: 'Pindai — Klien HTTP untuk Gemini Vision API & Google Translate', en: 'Pindai — HTTP REST client for Gemini Vision API & Google Translate' }, route: '#/projects/pindai' }
     ]
   },
   {
     id: 'mobile',
-    label: { id: 'Mobile & Cross-Platform', en: 'Mobile & Cross-Platform' },
+    label: { id: 'Mobile, PWA & Desktop', en: 'Mobile, PWA & Desktop' },
     items: [
       { name: 'Flutter', trace: { id: 'Pindai v1.1.1 — Satu codebase untuk Windows x64, Android & iOS', en: 'Pindai v1.1.1 — Single codebase targeting Windows x64, Android & iOS' }, route: '#/projects/pindai' },
+      { name: 'PWA (Service Worker)', trace: { id: 'SPORA v1.9 (spora-pwa-v7) — Instalasi Android/iOS/Desktop + offline', en: 'SPORA v1.9 (spora-pwa-v7) — Standalone Android/iOS/Desktop + offline' }, route: '#/projects/spora' },
       { name: 'WinRT Native Bridge', trace: { id: 'Pindai — Integrasi Windows.Media.Ocr & deteksi kamera Windows', en: 'Pindai — Windows.Media.Ocr & smart Windows webcam integration' }, route: '#/projects/pindai' }
     ]
   },
@@ -618,19 +531,19 @@ window.PORTFOLIO_DATA.techCategories = [
   },
   {
     id: 'data',
-    label: { id: 'Data & Penyimpanan', en: 'Data & Persistence' },
+    label: { id: 'Database & Pengolahan Data', en: 'Database & Data Ops' },
     items: [
-      { name: 'Attendance Database Sync', trace: { id: 'Week 02 & Week 04 Magang PT Semen Padang — Sinkronisasi absensi & penggajian', en: 'Weeks 02 & 04 PT Semen Padang Internship — Attendance & payroll sync' }, route: '#internship' },
+      { name: 'MySQL / SQLite', trace: { id: 'SPORA v1.9 — 5.406 nomenklatur alat, 27 migrasi & statistik 12 bulan', en: 'SPORA v1.9 — 5,406 nomenclatures, 27 migrations & 12-month analytics' }, route: '#/projects/spora' },
       { name: 'Microsoft Excel', trace: { id: 'Week 02 & Week 04 — Rekonsiliasi absensi man power & verifikasi payroll', en: 'Weeks 02 & 04 — Manpower attendance reconciliation & payroll verification' }, route: '#internship' },
-      { name: 'Local Storage v2', trace: { id: 'Pindai — Penyimpanan riwayat terstruktur & cache gambar terbatas 30 entri', en: 'Pindai — Structured document history & 30-entry bounded image cache' }, route: '#/projects/pindai' }
+      { name: 'Local Storage v2', trace: { id: 'Pindai — Penyimpanan riwayat terstruktur & cache gambar 30 entri', en: 'Pindai — Structured document history & 30-entry bounded image cache' }, route: '#/projects/pindai' }
     ]
   },
   {
     id: 'tools',
-    label: { id: 'Tools & Rilis', en: 'Tools & Release Engineering' },
+    label: { id: 'Testing, CI & Rilis', en: 'Testing, CI & Release' },
     items: [
-      { name: 'Git & GitHub', trace: { id: 'Kontrol versi, distribusi rilis .exe/.apk & manajemen proyek', en: 'Version control, .exe/.apk release distribution & repository workflow' }, route: '#/projects/pindai' },
-      { name: 'GitHub Actions CI', trace: { id: 'Pindai — Workflow macOS-15 otomatis membangun artefak iOS (.ipa)', en: 'Pindai — Automated macOS-15 workflow building iOS (.ipa) artifact' }, route: '#/projects/pindai' },
+      { name: 'PHPUnit & Playwright E2E', trace: { id: 'SPORA v1.9 — 99/99 tes fitur PHPUnit (592 assertions) & 24 layar E2E', en: 'SPORA v1.9 — 99/99 PHPUnit feature tests (592 assertions) & 24 E2E views' }, route: '#/projects/spora' },
+      { name: 'Git & GitHub Actions', trace: { id: 'Kontrol versi, rilis Pindai .exe/.apk & workflow macOS-15 iOS CI', en: 'Version control, Pindai .exe/.apk releases & macOS-15 iOS CI workflow' }, route: '#/projects/pindai' },
       { name: 'Inno Setup & ProGuard/R8', trace: { id: 'Pindai — Packaging installer Windows x64 & hardening release Android', en: 'Pindai — Windows x64 installer packaging & Android release hardening' }, route: '#/projects/pindai' }
     ]
   }
@@ -640,11 +553,11 @@ window.PORTFOLIO_DATA.techCategories = [
 window.PORTFOLIO_DATA.experience = [
   {
     period: { id: 'BULAN 01 / 04 • SEDANG BERJALAN', en: 'MONTH 01 / 04 • ONGOING' },
-    role: { id: 'Mahasiswa Magang (Internship)', en: 'Software & Field Operations Intern' },
+    role: { id: 'Mahasiswa Magang — Pengembang SPORA v1.9', en: 'Software & Field Intern — SPORA v1.9 Developer' },
     org: 'PT Semen Padang — Indarung, Padang',
     desc: {
-      id: 'Menjalani pengalaman nyata lintas lapangan dan rekayasa: pendaftaran biometrik pekerja saat maintenance kiln Indarung 6, rekonsiliasi database absensi-Excel untuk penggajian, serta merancang, membangun, dan mempresentasikan forum diskusi pabrik SPORA berbasis Laravel.',
-      en: 'Hands-on industrial and engineering internship: manpower biometric enrollment during Indarung 6 kiln maintenance, database-to-Excel attendance & payroll reconciliation, and building & presenting the Laravel-based SPORA plant discussion forum.'
+      id: 'Menjalani kerja lapangan (pendaftaran biometrik pekerja saat maintenance kiln Indarung 6), rekonsiliasi absensi database-Excel untuk penggajian, serta merancang dan merilis PWA forum industri SPORA v1.9 (5.406 alat, peta GIS, 99/99 tes PHPUnit lulus).',
+      en: 'Delivered field manpower biometric onboarding during Indarung 6 kiln maintenance, database-to-Excel payroll attendance reconciliation, and engineered the live SPORA v1.9 industrial PWA (5,406 assets, GIS map, 99/99 passing PHPUnit tests).'
     }
   },
   {

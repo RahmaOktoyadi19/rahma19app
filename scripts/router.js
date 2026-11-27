@@ -30,6 +30,12 @@
     if (h === '#/projects/spora' || h === '#/spora') {
       return { view: 'spora', anchor: null };
     }
+    if (h === '#spora-gallery' || h === '#/projects/spora/gallery') {
+      return { view: 'spora', anchor: 'spora-gallery' };
+    }
+    if (h === '#spora-pwa' || h === '#/projects/spora/pwa') {
+      return { view: 'spora', anchor: 'spora-pwa' };
+    }
     if (h === '#/projects/detector-apd' || h === '#/detector-apd') {
       return { view: 'apd', anchor: null };
     }
@@ -94,6 +100,9 @@
 
     currentView = route.view;
 
+    if (route.view === 'spora' && window.RO_APP.cases) {
+      window.RO_APP.cases.hydrateSporaMedia();
+    }
     if (route.view === 'pindai' && window.RO_APP.cases) {
       window.RO_APP.cases.hydratePindaiMedia();
     }
